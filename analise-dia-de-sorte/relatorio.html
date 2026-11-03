@@ -1,0 +1,246 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dia de Sorte — Análise Estatística dos Últimos 100 Concursos</title><style>
+:root{
+  --bg:#0d1117;--panel:#161b22;--panel2:#1c2330;--line:#2b3444;--txt:#e6edf3;
+  --dim:#9aa7b8;--accent:#37d67a;--accent2:#f5b642;--hot:#ff6b6b;--cold:#4aa8ff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);
+  font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:1080px;margin:0 auto;padding:40px 24px 80px}
+header.hero{border:1px solid var(--line);border-radius:16px;padding:28px 30px;
+  background:linear-gradient(135deg,#17223a 0%,#131a26 55%,#1a1526 100%);margin-bottom:28px}
+h1{font-size:29px;line-height:1.25;margin:0 0 8px}
+.sub{color:var(--dim);font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{background:#0f1620;border:1px solid var(--line);border-radius:999px;
+  padding:5px 12px;font-size:12.5px;color:#c3ced9}
+.chip b{color:#fff;font-weight:600}
+h2{font-size:21px;margin:38px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+h3{font-size:16px;margin:26px 0 8px;color:#cfd9e4}
+p.note{color:var(--dim);font-size:14px;margin:6px 0 16px}
+.alert{border-left:3px solid var(--accent2);background:#211d12;padding:12px 16px;
+  border-radius:8px;font-size:13.5px;color:#e8dcc0;margin:18px 0}
+.spoiler{border-left:3px solid var(--cold);background:#121b26;padding:12px 16px;
+  border-radius:8px;font-size:13.5px;color:#c8ddf2;margin:14px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0 6px;font-size:13.5px}
+th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line)}
+th{background:#131a24;color:#9fb0c3;font-weight:600;font-size:12px;text-transform:uppercase;
+  letter-spacing:.04em}
+tr:hover td{background:#131a23}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+tr.top td{background:#12251a}
+tr.top td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
+.badge{display:inline-block;background:#0f1620;border:1px solid var(--line);border-radius:6px;
+  padding:1px 7px;font-size:11.5px;color:#9fb0c3;margin-left:6px}
+.bar{height:7px;border-radius:4px;background:#1f2836;overflow:hidden;min-width:60px}
+.bar>span{display:block;height:100%;background:linear-gradient(90deg,#2ea86a,#37d67a)}
+.up{color:var(--accent)}.down{color:var(--hot)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card .k{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--dim)}
+.card .v{font-size:22px;font-weight:650;margin-top:4px}
+.card .s{font-size:12px;color:var(--dim);margin-top:2px}
+.grid-dez{display:grid;grid-template-columns:repeat(10,1fr);gap:7px;margin:14px 0}
+.dez{border-radius:8px;padding:8px 0;text-align:center;font-size:12.5px;border:1px solid var(--line)}
+.dez b{display:block;font-size:14px}
+.legend{font-size:12px;color:var(--dim);margin:6px 0 18px}
+code{background:#0f1620;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:12.5px}
+footer{margin-top:44px;color:var(--dim);font-size:12.5px;border-top:1px solid var(--line);padding-top:16px}
+.foot-note{color:#7f8b9c}
+</style></head><body><div class="wrap">
+<header class="hero">
+  <h1>Dia de Sorte — Análise Estatística dos Últimos 100 Concursos</h1>
+  <div class="sub">Concursos 1238 a 1337 · 06/07/2026 a 01/11/2026 · fonte: API oficial Loterias Caixa</div>
+  <div class="chips">
+    <span class="chip">Janela <b>1238–1337</b></span>
+    <span class="chip"><b>100</b> concursos</span>
+    <span class="chip">Universo <b>01–31</b> · 7 dezenas</span>
+    <span class="chip">Combinações <b>2.629.575</b></span>
+    <span class="chip">Fonte <b>API oficial Caixa</b></span>
+  </div>
+</header>
+<div class="alert"><b>Nota sobre o arquivo enviado:</b> nenhum arquivo chegou com a mensagem
+(workspace sem CSV/Excel/PDF de jogos). A análise roda direto sobre os resultados oficiais da
+Caixa — base mais confiável que uma planilha manual. Se o arquivo era uma lista de jogos para
+conferência, reenvie que eu cruzo os jogos com o padrão abaixo.</div>
+<h2>1. Resumo executivo</h2>
+<p class="note">O padrão mais prevalente de cada tópico, do mais para o menos comum, com o quanto ele se afasta do que o puro azar produziria.</p>
+<table><thead><tr><th style='width:38px'>#</th><th>Tópico</th><th>Padrão dominante</th><th class='num'>Concursos</th><th class='num'>%</th><th class='num'>Esperado</th><th class='num'>Desvio</th></tr></thead><tbody>
+<tr><td>1</td><td><b>Pares / Ímpares</b></td><td>4 pares / 3 ímpares</td><td class='num'><b>29</b></td><td class='num'>29,0%</td><td class='num'>29,1%</td><td class='num down'>-0,1 p.p.</td></tr>
+<tr><td>2</td><td><b>Baixas / Altas</b></td><td>3 baixas / 4 altas</td><td class='num'><b>29</b></td><td class='num'>29,0%</td><td class='num'>31,5%</td><td class='num down'>-2,5 p.p.</td></tr>
+<tr><td>3</td><td><b>Soma</b></td><td>120–134</td><td class='num'><b>22</b></td><td class='num'>22,0%</td><td class='num'>21,7%</td><td class='num up'>0,3 p.p.</td></tr>
+<tr><td>4</td><td><b>Repetidas do concurso anterior</b></td><td>1 repetida</td><td class='num'><b>38</b></td><td class='num'>38,0%</td><td class='num'>35,8%</td><td class='num up'>2,2 p.p.</td></tr>
+<tr><td>5</td><td><b>Grupos em sequência</b></td><td>3 no G1 (01–10) / 2 no G2 (11–20) / 2 no G3 (21–31)</td><td class='num'><b>18</b></td><td class='num'>18,0%</td><td class='num'>11,3%</td><td class='num up'>6,7 p.p.</td></tr>
+<tr><td>6</td><td><b>Dezenas em sequência</b></td><td>1 dupla</td><td class='num'><b>44</b></td><td class='num'>44,0%</td><td class='num'>40,4%</td><td class='num up'>3,6 p.p.</td></tr>
+</tbody></table>
+<h2>2. Pares / ímpares</h2>
+<p class='note'>Quantidade de dezenas <b>pares</b> em cada jogo (ímpares = 7 − pares). O universo 01–31 tem 15 pares e 16 ímpares.</p>
+<table><thead><tr><th style="width:52px">Rank</th><th>Padrão</th><th class='num'>Concursos</th><th class='num'>%</th><th class='num'>Esperado (azar)</th><th class='num'>Desvio</th><th style='width:150px'>Peso</th></tr></thead><tbody><tr class="top"><td>1º</td><td>4 pares / 3 ímpares<span class='badge'>padrão dominante</span></td><td class='num'><b>29</b></td><td class='num'>29,0%</td><td class='num'>29,1%</td><td class='num down'>▼ -0,1 p.p.</td><td><div class="bar"><span style="width:100%"></span></div></td></tr><tr><td>2º</td><td>3 pares / 4 ímpares</td><td class='num'><b>25</b></td><td class='num'>25,0%</td><td class='num'>31,5%</td><td class='num down'>▼ -6,5 p.p.</td><td><div class="bar"><span style="width:86%"></span></div></td></tr><tr><td>3º</td><td>5 pares / 2 ímpares</td><td class='num'><b>21</b></td><td class='num'>21,0%</td><td class='num'>13,7%</td><td class='num up'>▲ 7,3 p.p.</td><td><div class="bar"><span style="width:72%"></span></div></td></tr><tr><td>4º</td><td>2 pares / 5 ímpares</td><td class='num'><b>17</b></td><td class='num'>17,0%</td><td class='num'>17,4%</td><td class='num down'>▼ -0,4 p.p.</td><td><div class="bar"><span style="width:59%"></span></div></td></tr><tr><td>5º</td><td>6 pares / 1 ímpar</td><td class='num'><b>4</b></td><td class='num'>4,0%</td><td class='num'>3,0%</td><td class='num up'>▲ 0,9 p.p.</td><td><div class="bar"><span style="width:14%"></span></div></td></tr><tr><td>6º</td><td>1 par / 6 ímpares</td><td class='num'><b>3</b></td><td class='num'>3,0%</td><td class='num'>4,6%</td><td class='num down'>▼ -1,6 p.p.</td><td><div class="bar"><span style="width:10%"></span></div></td></tr><tr><td>7º</td><td>0 pares / 7 ímpares</td><td class='num'><b>1</b></td><td class='num'>1,0%</td><td class='num'>0,4%</td><td class='num up'>▲ 0,6 p.p.</td><td><div class="bar"><span style="width:3%"></span></div></td></tr><tr><td>8º</td><td>7 pares / 0 ímpares</td><td class='num'><b>0</b></td><td class='num'>0,0%</td><td class='num'>0,2%</td><td class='num down'>▼ -0,2 p.p.</td><td><div class="bar"><span style="width:0%"></span></div></td></tr></tbody></table>
+<p class="note">Teste qui-quadrado: χ² = 5,24 · gl = 4 · <b>p = 0,263</b> · <span style="color:var(--accent)">sem desvio significativo ao nível de 5% (compatível com aleatoriedade)</span></p>
+<div class="cards">
+<div class="card"><div class="k">Padrão dominante</div><div class="v">4 pares / 3 ímpares</div>
+<div class="s">29 de 100 concursos</div></div>
+<div class="card"><div class="k">Equilíbrio (3–4 pares)</div><div class="v">54,0%</div>
+<div class="s">dos concursos</div></div>
+<div class="card"><div class="k">Dezenas pares sorteadas</div><div class="v">357</div>
+<div class="s">de 700 no total</div></div></div>
+<h2>3. Baixas / altas</h2>
+<p class='note'>Baixas = 01–15 (15 dezenas) · altas = 16–31 (16 dezenas).</p>
+<table><thead><tr><th style="width:52px">Rank</th><th>Padrão</th><th class='num'>Concursos</th><th class='num'>%</th><th class='num'>Esperado (azar)</th><th class='num'>Desvio</th><th style='width:150px'>Peso</th></tr></thead><tbody><tr class="top"><td>1º</td><td>3 baixas / 4 altas<span class='badge'>padrão dominante</span></td><td class='num'><b>29</b></td><td class='num'>29,0%</td><td class='num'>31,5%</td><td class='num down'>▼ -2,5 p.p.</td><td><div class="bar"><span style="width:100%"></span></div></td></tr><tr><td>2º</td><td>4 baixas / 3 altas</td><td class='num'><b>29</b></td><td class='num'>29,0%</td><td class='num'>29,1%</td><td class='num down'>▼ -0,1 p.p.</td><td><div class="bar"><span style="width:100%"></span></div></td></tr><tr><td>3º</td><td>2 baixas / 5 altas</td><td class='num'><b>21</b></td><td class='num'>21,0%</td><td class='num'>17,4%</td><td class='num up'>▲ 3,6 p.p.</td><td><div class="bar"><span style="width:72%"></span></div></td></tr><tr><td>4º</td><td>5 baixas / 2 altas</td><td class='num'><b>15</b></td><td class='num'>15,0%</td><td class='num'>13,7%</td><td class='num up'>▲ 1,3 p.p.</td><td><div class="bar"><span style="width:52%"></span></div></td></tr><tr><td>5º</td><td>1 baixa / 6 altas</td><td class='num'><b>3</b></td><td class='num'>3,0%</td><td class='num'>4,6%</td><td class='num down'>▼ -1,6 p.p.</td><td><div class="bar"><span style="width:10%"></span></div></td></tr><tr><td>6º</td><td>6 baixas / 1 alta</td><td class='num'><b>3</b></td><td class='num'>3,0%</td><td class='num'>3,0%</td><td class='num down'>≈ -0,1 p.p.</td><td><div class="bar"><span style="width:10%"></span></div></td></tr><tr><td>7º</td><td>0 baixas / 7 altas</td><td class='num'><b>0</b></td><td class='num'>0,0%</td><td class='num'>0,4%</td><td class='num down'>▼ -0,4 p.p.</td><td><div class="bar"><span style="width:0%"></span></div></td></tr><tr><td>8º</td><td>7 baixas / 0 altas</td><td class='num'><b>0</b></td><td class='num'>0,0%</td><td class='num'>0,2%</td><td class='num down'>▼ -0,2 p.p.</td><td><div class="bar"><span style="width:0%"></span></div></td></tr></tbody></table>
+<p class="note">Teste qui-quadrado: χ² = 1,68 · gl = 4 · <b>p = 0,794</b> · <span style="color:var(--accent)">sem desvio significativo ao nível de 5% (compatível com aleatoriedade)</span></p>
+<div class="cards">
+<div class="card"><div class="k">Padrão dominante</div><div class="v">3 baixas / 4 altas</div>
+<div class="s">empate técnico com 4 baixas / 3 altas (29 cada)</div></div>
+<div class="card"><div class="k">Equilíbrio (3–4 de cada)</div><div class="v">58,0%</div>
+<div class="s">dos concursos</div></div>
+<div class="card"><div class="k">Extremos (0 ou 7)</div><div class="v">0</div>
+<div class="s">não ocorreram no período</div></div></div>
+<h2>4. Soma das 7 dezenas</h2>
+<p class='note'>Mínimo teórico 28 · máximo 196 · média teórica 112. Faixas de 15 pontos, ordenadas da mais frequente para a menos frequente.</p>
+<table><thead><tr><th style="width:52px">Rank</th><th>Faixa de soma</th><th class='num'>Concursos</th><th class='num'>%</th><th class='num'>Esperado (azar)</th><th class='num'>Desvio</th><th style='width:150px'>Peso</th></tr></thead><tbody><tr class="top"><td>1º</td><td>120–134<span class='badge'>padrão dominante</span></td><td class='num'><b>22</b></td><td class='num'>22,0%</td><td class='num'>21,7%</td><td class='num up'>▲ 0,3 p.p.</td><td><div class="bar"><span style="width:100%"></span></div></td></tr><tr><td>2º</td><td>90–104</td><td class='num'><b>21</b></td><td class='num'>21,0%</td><td class='num'>21,7%</td><td class='num down'>▼ -0,7 p.p.</td><td><div class="bar"><span style="width:95%"></span></div></td></tr><tr><td>3º</td><td>105–119</td><td class='num'><b>19</b></td><td class='num'>19,0%</td><td class='num'>27,1%</td><td class='num down'>▼ -8,1 p.p.</td><td><div class="bar"><span style="width:86%"></span></div></td></tr><tr><td>4º</td><td>135–149</td><td class='num'><b>18</b></td><td class='num'>18,0%</td><td class='num'>10,9%</td><td class='num up'>▲ 7,0 p.p.</td><td><div class="bar"><span style="width:82%"></span></div></td></tr><tr><td>5º</td><td>75–89</td><td class='num'><b>12</b></td><td class='num'>12,0%</td><td class='num'>10,9%</td><td class='num up'>▲ 1,1 p.p.</td><td><div class="bar"><span style="width:55%"></span></div></td></tr><tr><td>6º</td><td>60–74</td><td class='num'><b>5</b></td><td class='num'>5,0%</td><td class='num'>3,3%</td><td class='num up'>▲ 1,7 p.p.</td><td><div class="bar"><span style="width:23%"></span></div></td></tr><tr><td>7º</td><td>150–164</td><td class='num'><b>3</b></td><td class='num'>3,0%</td><td class='num'>3,3%</td><td class='num down'>▼ -0,3 p.p.</td><td><div class="bar"><span style="width:14%"></span></div></td></tr><tr><td>8º</td><td>165–179</td><td class='num'><b>0</b></td><td class='num'>0,0%</td><td class='num'>0,5%</td><td class='num down'>▼ -0,5 p.p.</td><td><div class="bar"><span style="width:0%"></span></div></td></tr><tr><td>9º</td><td>180–196</td><td class='num'><b>0</b></td><td class='num'>0,0%</td><td class='num'><0,1%</td><td class='num down'>≈ 0,0 p.p.</td><td><div class="bar"><span style="width:0%"></span></div></td></tr><tr><td>10º</td><td>28–44</td><td class='num'><b>0</b></td><td class='num'>0,0%</td><td class='num'><0,1%</td><td class='num down'>≈ 0,0 p.p.</td><td><div class="bar"><span style="width:0%"></span></div></td></tr><tr><td>11º</td><td>45–59</td><td class='num'><b>0</b></td><td class='num'>0,0%</td><td class='num'>0,5%</td><td class='num down'>▼ -0,5 p.p.</td><td><div class="bar"><span style="width:0%"></span></div></td></tr></tbody></table>
+<p class="note">Teste qui-quadrado: χ² = 7,11 · gl = 5 · <b>p = 0,212</b> · <span style="color:var(--accent)">sem desvio significativo ao nível de 5% (compatível com aleatoriedade)</span></p>
+<div class="cards">
+<div class="card"><div class="k">Faixa dominante</div><div class="v">120–134</div>
+<div class="s">22,0% dos concursos</div></div>
+<div class="card"><div class="k">Média observada</div><div class="v">112,61</div>
+<div class="s">mediana 115,0 · σ 22,56</div></div>
+<div class="card"><div class="k">Soma mais repetida</div><div class="v">108</div>
+<div class="s">apareceu 5 vezes</div></div>
+<div class="card"><div class="k">Faixa 90–149</div><div class="v">80,0%</div>
+<div class="s">concentração central observada</div></div>
+<div class="card"><div class="k">Mín / máx</div><div class="v">62 / 157</div>
+<div class="s">P25 97,2 · P75 130,8</div></div></div>
+<h2>5. Repetidas do concurso anterior</h2>
+<p class='note'>Quantas das 7 dezenas já haviam saído no concurso imediatamente anterior.</p>
+<table><thead><tr><th style="width:52px">Rank</th><th>Padrão</th><th class='num'>Concursos</th><th class='num'>%</th><th class='num'>Esperado (azar)</th><th class='num'>Desvio</th><th style='width:150px'>Peso</th></tr></thead><tbody><tr class="top"><td>1º</td><td>1 repetida<span class='badge'>padrão dominante</span></td><td class='num'><b>38</b></td><td class='num'>38,0%</td><td class='num'>35,8%</td><td class='num up'>▲ 2,2 p.p.</td><td><div class="bar"><span style="width:100%"></span></div></td></tr><tr><td>2º</td><td>2 repetidas</td><td class='num'><b>36</b></td><td class='num'>36,0%</td><td class='num'>33,9%</td><td class='num up'>▲ 2,1 p.p.</td><td><div class="bar"><span style="width:95%"></span></div></td></tr><tr><td>3º</td><td>3 repetidas</td><td class='num'><b>12</b></td><td class='num'>12,0%</td><td class='num'>14,1%</td><td class='num down'>▼ -2,1 p.p.</td><td><div class="bar"><span style="width:32%"></span></div></td></tr><tr><td>4º</td><td>nenhuma repetida</td><td class='num'><b>10</b></td><td class='num'>10,0%</td><td class='num'>13,2%</td><td class='num down'>▼ -3,2 p.p.</td><td><div class="bar"><span style="width:26%"></span></div></td></tr><tr><td>5º</td><td>4 repetidas</td><td class='num'><b>2</b></td><td class='num'>2,0%</td><td class='num'>2,7%</td><td class='num down'>▼ -0,7 p.p.</td><td><div class="bar"><span style="width:5%"></span></div></td></tr><tr><td>6º</td><td>5 repetidas</td><td class='num'><b>2</b></td><td class='num'>2,0%</td><td class='num'>0,2%</td><td class='num up'>▲ 1,8 p.p.</td><td><div class="bar"><span style="width:5%"></span></div></td></tr><tr><td>7º</td><td>6 repetidas</td><td class='num'><b>0</b></td><td class='num'>0,0%</td><td class='num'><0,1%</td><td class='num down'>≈ 0,0 p.p.</td><td><div class="bar"><span style="width:0%"></span></div></td></tr><tr><td>8º</td><td>7 repetidas</td><td class='num'><b>0</b></td><td class='num'>0,0%</td><td class='num'><0,1%</td><td class='num '>≈ 0,0 p.p.</td><td><div class="bar"><span style="width:0%"></span></div></td></tr></tbody></table>
+<p class="note">Teste qui-quadrado: χ² = 1,74 · gl = 4 · <b>p = 0,784</b> · <span style="color:var(--accent)">sem desvio significativo ao nível de 5% (compatível com aleatoriedade)</span></p>
+<div class="cards">
+<div class="card"><div class="k">Padrão dominante</div><div class="v">1 repetida</div>
+<div class="s">38 concursos · 2 repetidas logo atrás (36,0%)</div></div>
+<div class="card"><div class="k">Média de repetidas</div><div class="v">1,64</div>
+<div class="s">esperado por azar: 1,58</div></div>
+<div class="card"><div class="k">Repetiu ≥ 1</div><div class="v">90,0%</div>
+<div class="s">dos concursos</div></div>
+<div class="card"><div class="k">Dezenas repetidas</div><div class="v">164</div>
+<div class="s">máx 5 · mín 0</div></div></div>
+<h2>6. Grupos em sequência</h2>
+<p class='note'>Grupos fixos: <b>G1 = 01–10</b> (10 dezenas) · <b>G2 = 11–20</b> (10) · <b>G3 = 21–31</b> (11). Como as 7 dezenas se distribuem entre os grupos.</p>
+<table><thead><tr><th style="width:52px">Rank</th><th>Distribuição G1 / G2 / G3</th><th class='num'>Concursos</th><th class='num'>%</th><th class='num'>Esperado (azar)</th><th class='num'>Desvio</th><th style='width:150px'>Peso</th></tr></thead><tbody><tr class="top"><td>1º</td><td>3 no G1 (01–10) / 2 no G2 (11–20) / 2 no G3 (21–31)<span class='badge'>padrão dominante</span></td><td class='num'><b>18</b></td><td class='num'>18,0%</td><td class='num'>11,3%</td><td class='num up'>▲ 6,7 p.p.</td><td><div class="bar"><span style="width:100%"></span></div></td></tr><tr><td>2º</td><td>2 no G1 (01–10) / 2 no G2 (11–20) / 3 no G3 (21–31)</td><td class='num'><b>14</b></td><td class='num'>14,0%</td><td class='num'>12,7%</td><td class='num up'>▲ 1,3 p.p.</td><td><div class="bar"><span style="width:78%"></span></div></td></tr><tr><td>3º</td><td>1 no G1 (01–10) / 2 no G2 (11–20) / 4 no G3 (21–31)</td><td class='num'><b>9</b></td><td class='num'>9,0%</td><td class='num'>5,7%</td><td class='num up'>▲ 3,4 p.p.</td><td><div class="bar"><span style="width:50%"></span></div></td></tr><tr><td>4º</td><td>2 no G1 (01–10) / 1 no G2 (11–20) / 4 no G3 (21–31)</td><td class='num'><b>9</b></td><td class='num'>9,0%</td><td class='num'>5,7%</td><td class='num up'>▲ 3,4 p.p.</td><td><div class="bar"><span style="width:50%"></span></div></td></tr><tr><td>5º</td><td>1 no G1 (01–10) / 3 no G2 (11–20) / 3 no G3 (21–31)</td><td class='num'><b>8</b></td><td class='num'>8,0%</td><td class='num'>7,5%</td><td class='num up'>▲ 0,5 p.p.</td><td><div class="bar"><span style="width:44%"></span></div></td></tr><tr><td>6º</td><td>2 no G1 (01–10) / 3 no G2 (11–20) / 2 no G3 (21–31)</td><td class='num'><b>5</b></td><td class='num'>5,0%</td><td class='num'>11,3%</td><td class='num down'>▼ -6,3 p.p.</td><td><div class="bar"><span style="width:28%"></span></div></td></tr><tr><td>7º</td><td>3 no G1 (01–10) / 1 no G2 (11–20) / 3 no G3 (21–31)</td><td class='num'><b>5</b></td><td class='num'>5,0%</td><td class='num'>7,5%</td><td class='num down'>▼ -2,5 p.p.</td><td><div class="bar"><span style="width:28%"></span></div></td></tr><tr><td>8º</td><td>4 no G1 (01–10) / 1 no G2 (11–20) / 2 no G3 (21–31)</td><td class='num'><b>4</b></td><td class='num'>4,0%</td><td class='num'>4,4%</td><td class='num down'>▼ -0,4 p.p.</td><td><div class="bar"><span style="width:22%"></span></div></td></tr><tr><td>9º</td><td>4 no G1 (01–10) / 2 no G2 (11–20) / 1 no G3 (21–31)</td><td class='num'><b>4</b></td><td class='num'>4,0%</td><td class='num'>4,0%</td><td class='num up'>≈ 0,1 p.p.</td><td><div class="bar"><span style="width:22%"></span></div></td></tr><tr><td>10º</td><td>1 no G1 (01–10) / 4 no G2 (11–20) / 2 no G3 (21–31)</td><td class='num'><b>3</b></td><td class='num'>3,0%</td><td class='num'>4,4%</td><td class='num down'>▼ -1,4 p.p.</td><td><div class="bar"><span style="width:17%"></span></div></td></tr><tr><td>11º</td><td>2 no G1 (01–10) / 4 no G2 (11–20) / 1 no G3 (21–31)</td><td class='num'><b>3</b></td><td class='num'>3,0%</td><td class='num'>4,0%</td><td class='num down'>▼ -0,9 p.p.</td><td><div class="bar"><span style="width:17%"></span></div></td></tr><tr><td>12º</td><td>0 no G1 (01–10) / 3 no G2 (11–20) / 4 no G3 (21–31)</td><td class='num'><b>2</b></td><td class='num'>2,0%</td><td class='num'>1,5%</td><td class='num up'>▲ 0,5 p.p.</td><td><div class="bar"><span style="width:11%"></span></div></td></tr><tr><td>13º+º</td><td>outros 11 padrões (agrupados)</td><td class='num'><b>16</b></td><td class='num'>16,0%</td><td class='num'>16,4%</td><td class='num down'>▼ -0,4 p.p.</td><td><div class="bar"><span style="width:89%"></span></div></td></tr></tbody></table>
+<p class="note">Teste qui-quadrado: χ² = 15,24 · gl = 8 · <b>p = 0,055</b> · <span style="color:var(--accent)">sem desvio significativo ao nível de 5% (compatível com aleatoriedade)</span></p>
+<h3>Média de dezenas por grupo</h3>
+<table><thead><tr><th>Grupo</th><th class='num'>Média observada</th><th class='num'>Esperado por azar</th><th class='num'>Desvio</th></tr></thead><tbody>
+<tr><td>G1 (01–10)</td><td class='num'><b>2,32</b></td><td class='num'>2,26</td><td class='num'>+0,06</td></tr>
+<tr><td>G2 (11–20)</td><td class='num'><b>2,04</b></td><td class='num'>2,26</td><td class='num'>-0,22</td></tr>
+<tr><td>G3 (21–31)</td><td class='num'><b>2,64</b></td><td class='num'>2,48</td><td class='num'>+0,16</td></tr>
+</tbody></table>
+<h3>Grupos ocupados / contiguidade</h3>
+<table><thead><tr><th style="width:52px">Rank</th><th>Padrão</th><th class='num'>Concursos</th><th class='num'>%</th><th class='num'>Esperado (azar)</th><th class='num'>Desvio</th><th style='width:150px'>Peso</th></tr></thead><tbody><tr class="top"><td>1º</td><td>3 grupos ocupados<span class='badge'>padrão dominante</span></td><td class='num'><b>88</b></td><td class='num'>88,0%</td><td class='num'>88,2%</td><td class='num down'>▼ -0,2 p.p.</td><td><div class="bar"><span style="width:100%"></span></div></td></tr><tr><td>2º</td><td>2 grupos ocupados</td><td class='num'><b>12</b></td><td class='num'>12,0%</td><td class='num'>11,8%</td><td class='num up'>▲ 0,2 p.p.</td><td><div class="bar"><span style="width:14%"></span></div></td></tr><tr><td>3º</td><td>1 grupo ocupado</td><td class='num'><b>0</b></td><td class='num'>0,0%</td><td class='num'><0,1%</td><td class='num down'>≈ 0,0 p.p.</td><td><div class="bar"><span style="width:0%"></span></div></td></tr></tbody></table>
+<table><thead><tr><th style="width:52px">Rank</th><th>Faixas ocupadas</th><th class='num'>Concursos</th><th class='num'>%</th><th class='num'>Esperado (azar)</th><th class='num'>Desvio</th><th style='width:150px'>Peso</th></tr></thead><tbody><tr class="top"><td>1º</td><td>G1+G2+G3 (todos)<span class='badge'>padrão dominante</span></td><td class='num'><b>88</b></td><td class='num'>88,0%</td><td class='num'>88,2%</td><td class='num down'>▼ -0,2 p.p.</td><td><div class="bar"><span style="width:100%"></span></div></td></tr><tr><td>2º</td><td>G1+G3 (sem G2)</td><td class='num'><b>6</b></td><td class='num'>6,0%</td><td class='num'>4,4%</td><td class='num up'>▲ 1,6 p.p.</td><td><div class="bar"><span style="width:7%"></span></div></td></tr><tr><td>3º</td><td>G1+G2 (sem G3)</td><td class='num'><b>4</b></td><td class='num'>4,0%</td><td class='num'>2,9%</td><td class='num up'>▲ 1,1 p.p.</td><td><div class="bar"><span style="width:5%"></span></div></td></tr><tr><td>4º</td><td>G2+G3 (sem G1)</td><td class='num'><b>2</b></td><td class='num'>2,0%</td><td class='num'>4,4%</td><td class='num down'>▼ -2,4 p.p.</td><td><div class="bar"><span style="width:2%"></span></div></td></tr><tr><td>5º</td><td>só G1</td><td class='num'><b>0</b></td><td class='num'>0,0%</td><td class='num'><0,1%</td><td class='num '>≈ 0,0 p.p.</td><td><div class="bar"><span style="width:0%"></span></div></td></tr><tr><td>6º</td><td>só G2</td><td class='num'><b>0</b></td><td class='num'>0,0%</td><td class='num'><0,1%</td><td class='num '>≈ 0,0 p.p.</td><td><div class="bar"><span style="width:0%"></span></div></td></tr><tr><td>7º</td><td>só G3</td><td class='num'><b>0</b></td><td class='num'>0,0%</td><td class='num'><0,1%</td><td class='num down'>≈ 0,0 p.p.</td><td><div class="bar"><span style="width:0%"></span></div></td></tr></tbody></table>
+<p class="note">Teste qui-quadrado: χ² = 0,01 · gl = 1 · <b>p = 0,943</b> · <span style="color:var(--accent)">sem desvio significativo ao nível de 5% (compatível com aleatoriedade)</span></p>
+<div class="cards">
+<div class="card"><div class="k">Padrão dominante</div><div class="v">3 / 2 / 2</div>
+<div class="s">18 concursos (18,0%)</div></div>
+<div class="card"><div class="k">3 grupos ocupados</div><div class="v">88,0%</div>
+<div class="s">dos concursos</div></div>
+<div class="card"><div class="k">Um grupo só</div><div class="v">0</div>
+<div class="s">nunca ocorreu</div></div></div>
+<h2>7. Dezenas em sequência</h2>
+<p class='note'>Sequência = dezenas consecutivas no mesmo jogo (12-13 = dupla; 05-06-07 = trio; 04-05-06-07 = quadra…).</p>
+<table><thead><tr><th style="width:52px">Rank</th><th>Padrão de sequência no jogo</th><th class='num'>Concursos</th><th class='num'>%</th><th class='num'>Esperado (azar)</th><th class='num'>Desvio</th><th style='width:150px'>Peso</th></tr></thead><tbody><tr class="top"><td>1º</td><td>1 dupla<span class='badge'>padrão dominante</span></td><td class='num'><b>44</b></td><td class='num'>44,0%</td><td class='num'>40,4%</td><td class='num up'>▲ 3,6 p.p.</td><td><div class="bar"><span style="width:100%"></span></div></td></tr><tr><td>2º</td><td>Sem sequência</td><td class='num'><b>24</b></td><td class='num'>24,0%</td><td class='num'>18,3%</td><td class='num up'>▲ 5,7 p.p.</td><td><div class="bar"><span style="width:55%"></span></div></td></tr><tr><td>3º</td><td>2 duplas</td><td class='num'><b>12</b></td><td class='num'>12,0%</td><td class='num'>20,2%</td><td class='num down'>▼ -8,2 p.p.</td><td><div class="bar"><span style="width:27%"></span></div></td></tr><tr><td>4º</td><td>1 trio</td><td class='num'><b>11</b></td><td class='num'>11,0%</td><td class='num'>10,1%</td><td class='num up'>▲ 0,9 p.p.</td><td><div class="bar"><span style="width:25%"></span></div></td></tr><tr><td>5º</td><td>1 trio + 1 dupla</td><td class='num'><b>6</b></td><td class='num'>6,0%</td><td class='num'>5,8%</td><td class='num up'>▲ 0,2 p.p.</td><td><div class="bar"><span style="width:14%"></span></div></td></tr><tr><td>6º</td><td>1 quadra</td><td class='num'><b>1</b></td><td class='num'>1,0%</td><td class='num'>1,9%</td><td class='num down'>▼ -0,9 p.p.</td><td><div class="bar"><span style="width:2%"></span></div></td></tr><tr><td>7º</td><td>1 trio + 2 duplas</td><td class='num'><b>1</b></td><td class='num'>1,0%</td><td class='num'>0,3%</td><td class='num up'>▲ 0,7 p.p.</td><td><div class="bar"><span style="width:2%"></span></div></td></tr><tr><td>8º</td><td>3 duplas</td><td class='num'><b>1</b></td><td class='num'>1,0%</td><td class='num'>1,9%</td><td class='num down'>▼ -0,9 p.p.</td><td><div class="bar"><span style="width:2%"></span></div></td></tr></tbody></table>
+<p class="note">Teste qui-quadrado: χ² = 5,83 · gl = 5 · <b>p = 0,323</b> · <span style="color:var(--accent)">sem desvio significativo ao nível de 5% (compatível com aleatoriedade)</span></p>
+<h3>Maior sequência de cada concurso</h3>
+<table><thead><tr><th style="width:52px">Rank</th><th>Maior sequência</th><th class='num'>Concursos</th><th class='num'>%</th><th class='num'>Esperado (azar)</th><th class='num'>Desvio</th><th style='width:150px'>Peso</th></tr></thead><tbody><tr class="top"><td>1º</td><td>dupla (2 seguidas)<span class='badge'>padrão dominante</span></td><td class='num'><b>57</b></td><td class='num'>57,0%</td><td class='num'>62,5%</td><td class='num down'>▼ -5,5 p.p.</td><td><div class="bar"><span style="width:100%"></span></div></td></tr><tr><td>2º</td><td>sem sequência</td><td class='num'><b>24</b></td><td class='num'>24,0%</td><td class='num'>18,3%</td><td class='num up'>▲ 5,7 p.p.</td><td><div class="bar"><span style="width:42%"></span></div></td></tr><tr><td>3º</td><td>trio (3 seguidas)</td><td class='num'><b>18</b></td><td class='num'>18,0%</td><td class='num'>16,4%</td><td class='num up'>▲ 1,6 p.p.</td><td><div class="bar"><span style="width:32%"></span></div></td></tr><tr><td>4º</td><td>quadra (4 seguidas)</td><td class='num'><b>1</b></td><td class='num'>1,0%</td><td class='num'>2,5%</td><td class='num down'>▼ -1,5 p.p.</td><td><div class="bar"><span style="width:2%"></span></div></td></tr><tr><td>5º</td><td>7 seguidas</td><td class='num'><b>0</b></td><td class='num'>0,0%</td><td class='num'><0,1%</td><td class='num '>≈ 0,0 p.p.</td><td><div class="bar"><span style="width:0%"></span></div></td></tr><tr><td>6º</td><td>quina (5 seguidas)</td><td class='num'><b>0</b></td><td class='num'>0,0%</td><td class='num'>0,3%</td><td class='num down'>▼ -0,3 p.p.</td><td><div class="bar"><span style="width:0%"></span></div></td></tr><tr><td>7º</td><td>sena (6 seguidas)</td><td class='num'><b>0</b></td><td class='num'>0,0%</td><td class='num'><0,1%</td><td class='num down'>≈ 0,0 p.p.</td><td><div class="bar"><span style="width:0%"></span></div></td></tr></tbody></table>
+<div class="cards">
+<div class="card"><div class="k">Padrão dominante</div><div class="v">1 dupla</div>
+<div class="s">44 concursos (44,0%)</div></div>
+<div class="card"><div class="k">Com alguma sequência</div><div class="v">76,0%</div>
+<div class="s">esperado por azar: 81,7%</div></div>
+<div class="card"><div class="k">Sem sequência</div><div class="v">24,0%</div>
+<div class="s">24 concursos</div></div>
+<div class="card"><div class="k">Quadra / quina+</div><div class="v">1 / 0</div>
+<div class="s">no período analisado</div></div></div>
+<h2>8. Complementos — dezenas</h2>
+<p class='note'>Aparições de cada dezena nos 100 concursos (esperado por azar ≈ 22,6). Cor mais quente = mais sorteada.</p>
+<div class="grid-dez">
+<div class="dez" style="background:rgba(255,107,107,0.46)"><b>01</b>24x</div>
+<div class="dez" style="background:rgba(255,107,107,0.65)"><b>02</b>30x</div>
+<div class="dez" style="background:rgba(74,168,255,0.46)"><b>03</b>19x</div>
+<div class="dez" style="background:rgba(255,107,107,0.59)"><b>04</b>28x</div>
+<div class="dez" style="background:rgba(74,168,255,0.55)"><b>05</b>16x</div>
+<div class="dez" style="background:rgba(255,107,107,0.59)"><b>06</b>28x</div>
+<div class="dez" style="background:rgba(74,168,255,0.42)"><b>07</b>20x</div>
+<div class="dez" style="background:rgba(255,107,107,0.49)"><b>08</b>25x</div>
+<div class="dez" style="background:rgba(255,107,107,0.42)"><b>09</b>23x</div>
+<div class="dez" style="background:rgba(74,168,255,0.46)"><b>10</b>19x</div>
+<div class="dez" style="background:rgba(255,107,107,0.62)"><b>11</b>29x</div>
+<div class="dez" style="background:rgba(74,168,255,0.42)"><b>12</b>20x</div>
+<div class="dez" style="background:rgba(74,168,255,0.52)"><b>13</b>17x</div>
+<div class="dez" style="background:rgba(255,107,107,0.39)"><b>14</b>22x</div>
+<div class="dez" style="background:rgba(74,168,255,0.39)"><b>15</b>21x</div>
+<div class="dez" style="background:rgba(74,168,255,0.39)"><b>16</b>21x</div>
+<div class="dez" style="background:rgba(74,168,255,0.65)"><b>17</b>13x</div>
+<div class="dez" style="background:rgba(74,168,255,0.52)"><b>18</b>17x</div>
+<div class="dez" style="background:rgba(74,168,255,0.46)"><b>19</b>19x</div>
+<div class="dez" style="background:rgba(255,107,107,0.49)"><b>20</b>25x</div>
+<div class="dez" style="background:rgba(74,168,255,0.49)"><b>21</b>18x</div>
+<div class="dez" style="background:rgba(255,107,107,0.46)"><b>22</b>24x</div>
+<div class="dez" style="background:rgba(255,107,107,0.42)"><b>23</b>23x</div>
+<div class="dez" style="background:rgba(255,107,107,0.46)"><b>24</b>24x</div>
+<div class="dez" style="background:rgba(255,107,107,0.52)"><b>25</b>26x</div>
+<div class="dez" style="background:rgba(255,107,107,0.55)"><b>26</b>27x</div>
+<div class="dez" style="background:rgba(255,107,107,0.46)"><b>27</b>24x</div>
+<div class="dez" style="background:rgba(255,107,107,0.59)"><b>28</b>28x</div>
+<div class="dez" style="background:rgba(255,107,107,0.49)"><b>29</b>25x</div>
+<div class="dez" style="background:rgba(74,168,255,0.46)"><b>30</b>19x</div>
+<div class="dez" style="background:rgba(255,107,107,0.52)"><b>31</b>26x</div>
+</div>
+<div class='legend'>Vermelho = mais sorteada · azul = menos sorteada.</div>
+<table><thead><tr><th>Top 7 mais sorteadas</th><th class='num'>x</th><th>7 menos sorteadas</th><th class='num'>x</th></tr></thead><tbody>
+<tr><td>02</td><td class='num'>30</td><td>17</td><td class='num'>13</td></tr>
+<tr><td>11</td><td class='num'>29</td><td>05</td><td class='num'>16</td></tr>
+<tr><td>04</td><td class='num'>28</td><td>13</td><td class='num'>17</td></tr>
+<tr><td>06</td><td class='num'>28</td><td>18</td><td class='num'>17</td></tr>
+<tr><td>28</td><td class='num'>28</td><td>21</td><td class='num'>18</td></tr>
+<tr><td>26</td><td class='num'>27</td><td>03</td><td class='num'>19</td></tr>
+<tr><td>25</td><td class='num'>26</td><td>10</td><td class='num'>19</td></tr>
+</tbody></table>
+<h3>Pares de dezenas que mais saíram juntos</h3><p class='note'><code>06-26</code> 10x · <code>25-31</code> 10x · <code>27-31</code> 10x · <code>28-31</code> 10x · <code>01-06</code> 9x · <code>01-11</code> 9x · <code>02-09</code> 9x · <code>02-16</code> 9x · <code>02-31</code> 9x · <code>04-09</code> 9x</p>
+<h2>9. Perfil composto mais provável</h2>
+<p class="note">Combinação dos padrões dominantes de cada tópico — o "retrato" mais aderente ao histórico dos últimos 100 concursos.</p>
+<table><thead><tr><th>Tópico</th><th>Padrão dominante</th></tr></thead><tbody>
+<tr><td><b>Pares / ímpares</b></td><td>4 pares / 3 ímpares</td></tr>
+<tr><td><b>Baixas / altas</b></td><td>3 baixas / 4 altas</td></tr>
+<tr><td><b>Soma</b></td><td>120–134</td></tr>
+<tr><td><b>Repetidas do anterior</b></td><td>1 repetida</td></tr>
+<tr><td><b>Grupos (G1 / G2 / G3)</b></td><td>3 no G1 (01–10) / 2 no G2 (11–20) / 2 no G3 (21–31)</td></tr>
+<tr><td><b>Grupos ocupados</b></td><td>3 grupos ocupados</td></tr>
+<tr><td><b>Dezenas em sequência</b></td><td>1 dupla</td></tr>
+</tbody></table>
+<div class="spoiler"><b>Como usar:</b> 4 pares / 3 ímpares · 3 baixas / 4 altas ·
+soma 120–134 · 1 dezena repetida do concurso anterior · distribuição 3-2-2 entre os grupos ·
+exatamente 1 dupla de dezenas consecutivas. Jogos que seguem esse perfil não têm mais chance
+de acerto — apenas se parecem mais com o que a loteria efetivamente sorteia.</div>
+<div class="alert"><b>Limite estatístico:</b> toda combinação de 7 dezenas tem sempre
+1 chance em 2.629.575. Os testes qui-quadrado desta análise <b>não rejeitaram a aleatoriedade</b>
+em nenhum tópico (p &gt; 0,05 em todos; o mais próximo foi grupos, p = 0,055). Os padrões servem
+para organizar e filtrar jogos, não para prever o resultado.</div>
+<h2>10. Metodologia</h2>
+<ul class="note">
+<li>Base: API oficial da Caixa (<code>servicebus2.caixa.gov.br/portaldeloterias/api/diadesorte</code>),
+concursos 1238 a 1337
+(06/07/2026 a 01/11/2026); espelho local em <code>data/dia-de-sorte.json</code>.</li>
+<li>"Esperado (azar)" = distribuição <b>exata</b> obtida avaliando todas as
+2.629.575 combinações possíveis de 7 dezenas — não é aproximação.</li>
+<li>Aderência verificada por <b>qui-quadrado</b> com agrupamento de caudas raras (esperado &lt; 5),
+significância de 5%.</li>
+<li>Repetidas comparam cada concurso com o imediatamente anterior (o concurso
+1237 entra apenas como referência).</li>
+<li>Arquivos: <code>relatorio.html</code>, <code>relatorio.md</code>, <code>resultados/analise.json</code>,
+<code>resultados/tab_*.csv</code>, <code>analise.py</code>, <code>fetch_caixa.py</code>.</li>
+</ul>
+<footer>Gerado em 01/11/2026 · dados oficiais Loterias Caixa ·
+análise descritiva/exploratória. Jogue com responsabilidade.
+<span class="foot-note">18+ · loteria é entretenimento, não investimento.</span></footer>
+</div></body></html>

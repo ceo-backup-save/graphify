@@ -1,0 +1,4197 @@
+{
+  "meta": {
+    "jogo": "Dia de Sorte",
+    "fonte": "API oficial Loterias Caixa — servicebus2.caixa.gov.br/portaldeloterias/api/diadesorte",
+    "espelho_local": "data/dia-de-sorte.json",
+    "janela_concursos": [
+      1238,
+      1337
+    ],
+    "periodo": [
+      "06/07/2026",
+      "01/11/2026"
+    ],
+    "n_concursos": 100,
+    "universo": "31 dezenas (01–31), 7 sorteadas por concurso",
+    "combinacoes_possiveis": 2629575,
+    "concursos_no_historico": 1337
+  },
+  "definicoes": {
+    "pares": "dezenas pares entre as 7 sorteadas (universo tem 15 pares e 16 ímpares)",
+    "baixas": "dezenas de 01 a 15 (baixas) x 16 a 31 (altas) — 15 baixas e 16 altas no universo",
+    "soma": "soma aritmética das 7 dezenas sorteadas",
+    "repetidas": "dezenas do concurso N que também saíram no concurso N-1",
+    "grupos": "faixas fixas G1 = 01–10 (10 dezenas), G2 = 11–20 (10), G3 = 21–31 (11)",
+    "sequencias": "dezenas consecutivas dentro do mesmo jogo (ex.: 12-13 = dupla; 05-06-07 = trio)"
+  },
+  "topicos": {
+    "pares_impares": {
+      "linhas": [
+        {
+          "padrao": "4 pares / 3 ímpares",
+          "chave": 4,
+          "freq": 29,
+          "pct": 29.0,
+          "esperado_freq": 29.1,
+          "esperado_pct": 29.07,
+          "desvio_pct": -0.07,
+          "rank": 1
+        },
+        {
+          "padrao": "3 pares / 4 ímpares",
+          "chave": 3,
+          "freq": 25,
+          "pct": 25.0,
+          "esperado_freq": 31.5,
+          "esperado_pct": 31.49,
+          "desvio_pct": -6.49,
+          "rank": 2
+        },
+        {
+          "padrao": "5 pares / 2 ímpares",
+          "chave": 5,
+          "freq": 21,
+          "pct": 21.0,
+          "esperado_freq": 13.7,
+          "esperado_pct": 13.7,
+          "desvio_pct": 7.3,
+          "rank": 3
+        },
+        {
+          "padrao": "2 pares / 5 ímpares",
+          "chave": 2,
+          "freq": 17,
+          "pct": 17.0,
+          "esperado_freq": 17.4,
+          "esperado_pct": 17.44,
+          "desvio_pct": -0.44,
+          "rank": 4
+        },
+        {
+          "padrao": "6 pares / 1 ímpar",
+          "chave": 6,
+          "freq": 4,
+          "pct": 4.0,
+          "esperado_freq": 3.0,
+          "esperado_pct": 3.05,
+          "desvio_pct": 0.95,
+          "rank": 5
+        },
+        {
+          "padrao": "1 par / 6 ímpares",
+          "chave": 1,
+          "freq": 3,
+          "pct": 3.0,
+          "esperado_freq": 4.6,
+          "esperado_pct": 4.57,
+          "desvio_pct": -1.57,
+          "rank": 6
+        },
+        {
+          "padrao": "0 pares / 7 ímpares",
+          "chave": 0,
+          "freq": 1,
+          "pct": 1.0,
+          "esperado_freq": 0.4,
+          "esperado_pct": 0.44,
+          "desvio_pct": 0.56,
+          "rank": 7
+        },
+        {
+          "padrao": "7 pares / 0 ímpares",
+          "chave": 7,
+          "freq": 0,
+          "pct": 0.0,
+          "esperado_freq": 0.2,
+          "esperado_pct": 0.24,
+          "desvio_pct": -0.24,
+          "rank": 8
+        }
+      ],
+      "qui2": {
+        "qui2": 5.244168205915862,
+        "gl": 4,
+        "p_valor": 0.26314909041007595,
+        "significante_5pct": false,
+        "interpretacao": "sem desvio significativo ao nível de 5% (compatível com aleatoriedade)"
+      },
+      "total_dezenas_pares": 357,
+      "total_dezenas_impares": 343
+    },
+    "baixas_altas": {
+      "linhas": [
+        {
+          "padrao": "3 baixas / 4 altas",
+          "chave": 3,
+          "freq": 29,
+          "pct": 29.0,
+          "esperado_freq": 31.5,
+          "esperado_pct": 31.49,
+          "desvio_pct": -2.49,
+          "rank": 1
+        },
+        {
+          "padrao": "4 baixas / 3 altas",
+          "chave": 4,
+          "freq": 29,
+          "pct": 29.0,
+          "esperado_freq": 29.1,
+          "esperado_pct": 29.07,
+          "desvio_pct": -0.07,
+          "rank": 2
+        },
+        {
+          "padrao": "2 baixas / 5 altas",
+          "chave": 2,
+          "freq": 21,
+          "pct": 21.0,
+          "esperado_freq": 17.4,
+          "esperado_pct": 17.44,
+          "desvio_pct": 3.56,
+          "rank": 3
+        },
+        {
+          "padrao": "5 baixas / 2 altas",
+          "chave": 5,
+          "freq": 15,
+          "pct": 15.0,
+          "esperado_freq": 13.7,
+          "esperado_pct": 13.7,
+          "desvio_pct": 1.3,
+          "rank": 4
+        },
+        {
+          "padrao": "1 baixa / 6 altas",
+          "chave": 1,
+          "freq": 3,
+          "pct": 3.0,
+          "esperado_freq": 4.6,
+          "esperado_pct": 4.57,
+          "desvio_pct": -1.57,
+          "rank": 5
+        },
+        {
+          "padrao": "6 baixas / 1 alta",
+          "chave": 6,
+          "freq": 3,
+          "pct": 3.0,
+          "esperado_freq": 3.0,
+          "esperado_pct": 3.05,
+          "desvio_pct": -0.05,
+          "rank": 6
+        },
+        {
+          "padrao": "0 baixas / 7 altas",
+          "chave": 0,
+          "freq": 0,
+          "pct": 0.0,
+          "esperado_freq": 0.4,
+          "esperado_pct": 0.44,
+          "desvio_pct": -0.44,
+          "rank": 7
+        },
+        {
+          "padrao": "7 baixas / 0 altas",
+          "chave": 7,
+          "freq": 0,
+          "pct": 0.0,
+          "esperado_freq": 0.2,
+          "esperado_pct": 0.24,
+          "desvio_pct": -0.24,
+          "rank": 8
+        }
+      ],
+      "qui2": {
+        "qui2": 1.6799340910845584,
+        "gl": 4,
+        "p_valor": 0.794359313572398,
+        "significante_5pct": false,
+        "interpretacao": "sem desvio significativo ao nível de 5% (compatível com aleatoriedade)"
+      },
+      "total_dezenas_baixas": 341,
+      "total_dezenas_altas": 359
+    },
+    "soma": {
+      "faixas": [
+        {
+          "padrao": "120–134",
+          "chave": "120–134",
+          "freq": 22,
+          "pct": 22.0,
+          "esperado_freq": 21.7,
+          "esperado_pct": 21.7,
+          "desvio_pct": 0.3,
+          "rank": 1
+        },
+        {
+          "padrao": "90–104",
+          "chave": "90–104",
+          "freq": 21,
+          "pct": 21.0,
+          "esperado_freq": 21.7,
+          "esperado_pct": 21.7,
+          "desvio_pct": -0.7,
+          "rank": 2
+        },
+        {
+          "padrao": "105–119",
+          "chave": "105–119",
+          "freq": 19,
+          "pct": 19.0,
+          "esperado_freq": 27.1,
+          "esperado_pct": 27.1,
+          "desvio_pct": -8.1,
+          "rank": 3
+        },
+        {
+          "padrao": "135–149",
+          "chave": "135–149",
+          "freq": 18,
+          "pct": 18.0,
+          "esperado_freq": 10.9,
+          "esperado_pct": 10.95,
+          "desvio_pct": 7.05,
+          "rank": 4
+        },
+        {
+          "padrao": "75–89",
+          "chave": "75–89",
+          "freq": 12,
+          "pct": 12.0,
+          "esperado_freq": 10.9,
+          "esperado_pct": 10.95,
+          "desvio_pct": 1.05,
+          "rank": 5
+        },
+        {
+          "padrao": "60–74",
+          "chave": "60–74",
+          "freq": 5,
+          "pct": 5.0,
+          "esperado_freq": 3.3,
+          "esperado_pct": 3.27,
+          "desvio_pct": 1.73,
+          "rank": 6
+        },
+        {
+          "padrao": "150–164",
+          "chave": "150–164",
+          "freq": 3,
+          "pct": 3.0,
+          "esperado_freq": 3.3,
+          "esperado_pct": 3.27,
+          "desvio_pct": -0.27,
+          "rank": 7
+        },
+        {
+          "padrao": "165–179",
+          "chave": "165–179",
+          "freq": 0,
+          "pct": 0.0,
+          "esperado_freq": 0.5,
+          "esperado_pct": 0.5,
+          "desvio_pct": -0.5,
+          "rank": 8
+        },
+        {
+          "padrao": "180–196",
+          "chave": "180–196",
+          "freq": 0,
+          "pct": 0.0,
+          "esperado_freq": 0.0,
+          "esperado_pct": 0.03,
+          "desvio_pct": -0.03,
+          "rank": 9
+        },
+        {
+          "padrao": "28–44",
+          "chave": "28–44",
+          "freq": 0,
+          "pct": 0.0,
+          "esperado_freq": 0.0,
+          "esperado_pct": 0.03,
+          "desvio_pct": -0.03,
+          "rank": 10
+        },
+        {
+          "padrao": "45–59",
+          "chave": "45–59",
+          "freq": 0,
+          "pct": 0.0,
+          "esperado_freq": 0.5,
+          "esperado_pct": 0.5,
+          "desvio_pct": -0.5,
+          "rank": 11
+        }
+      ],
+      "estatisticas": {
+        "media": 112.61,
+        "mediana": 115.0,
+        "desvio_padrao": 22.56,
+        "minimo": 62,
+        "maximo": 157,
+        "moda": [
+          108,
+          5
+        ],
+        "p25": 97.2,
+        "p75": 130.8,
+        "media_teorica": 112,
+        "faixa_1sigma": [
+          90.0,
+          135.2
+        ],
+        "faixa_95pct_teorica": [
+          71,
+          153
+        ],
+        "obs_dentro_95pct": 95
+      },
+      "top_somas": [
+        {
+          "soma": 108,
+          "freq": 5,
+          "pct": 5.0
+        },
+        {
+          "soma": 98,
+          "freq": 4,
+          "pct": 4.0
+        },
+        {
+          "soma": 102,
+          "freq": 4,
+          "pct": 4.0
+        },
+        {
+          "soma": 123,
+          "freq": 4,
+          "pct": 4.0
+        },
+        {
+          "soma": 138,
+          "freq": 4,
+          "pct": 4.0
+        },
+        {
+          "soma": 76,
+          "freq": 3,
+          "pct": 3.0
+        },
+        {
+          "soma": 109,
+          "freq": 3,
+          "pct": 3.0
+        },
+        {
+          "soma": 117,
+          "freq": 3,
+          "pct": 3.0
+        },
+        {
+          "soma": 121,
+          "freq": 3,
+          "pct": 3.0
+        },
+        {
+          "soma": 127,
+          "freq": 3,
+          "pct": 3.0
+        }
+      ],
+      "qui2": {
+        "qui2": 7.114922940006881,
+        "gl": 5,
+        "p_valor": 0.21223269757931168,
+        "significante_5pct": false,
+        "interpretacao": "sem desvio significativo ao nível de 5% (compatível com aleatoriedade)"
+      }
+    },
+    "repetidas": {
+      "linhas": [
+        {
+          "padrao": "1 repetida",
+          "chave": 1,
+          "freq": 38,
+          "pct": 38.0,
+          "esperado_freq": 35.8,
+          "esperado_pct": 35.83,
+          "desvio_pct": 2.17,
+          "rank": 1
+        },
+        {
+          "padrao": "2 repetidas",
+          "chave": 2,
+          "freq": 36,
+          "pct": 36.0,
+          "esperado_freq": 33.9,
+          "esperado_pct": 33.94,
+          "desvio_pct": 2.06,
+          "rank": 2
+        },
+        {
+          "padrao": "3 repetidas",
+          "chave": 3,
+          "freq": 12,
+          "pct": 12.0,
+          "esperado_freq": 14.1,
+          "esperado_pct": 14.14,
+          "desvio_pct": -2.14,
+          "rank": 3
+        },
+        {
+          "padrao": "nenhuma repetida",
+          "chave": 0,
+          "freq": 10,
+          "pct": 10.0,
+          "esperado_freq": 13.2,
+          "esperado_pct": 13.16,
+          "desvio_pct": -3.16,
+          "rank": 4
+        },
+        {
+          "padrao": "4 repetidas",
+          "chave": 4,
+          "freq": 2,
+          "pct": 2.0,
+          "esperado_freq": 2.7,
+          "esperado_pct": 2.69,
+          "desvio_pct": -0.69,
+          "rank": 5
+        },
+        {
+          "padrao": "5 repetidas",
+          "chave": 5,
+          "freq": 2,
+          "pct": 2.0,
+          "esperado_freq": 0.2,
+          "esperado_pct": 0.22,
+          "desvio_pct": 1.78,
+          "rank": 6
+        },
+        {
+          "padrao": "6 repetidas",
+          "chave": 6,
+          "freq": 0,
+          "pct": 0.0,
+          "esperado_freq": 0.0,
+          "esperado_pct": 0.01,
+          "desvio_pct": -0.01,
+          "rank": 7
+        },
+        {
+          "padrao": "7 repetidas",
+          "chave": 7,
+          "freq": 0,
+          "pct": 0.0,
+          "esperado_freq": 0.0,
+          "esperado_pct": 0.0,
+          "desvio_pct": -0.0,
+          "rank": 8
+        }
+      ],
+      "estatisticas": {
+        "media": 1.64,
+        "mediana": 2.0,
+        "esperado_teorico": 1.58,
+        "total_dezenas_repetidas": 164,
+        "max": 5,
+        "min": 0,
+        "desvio_padrao": 1.02
+      },
+      "qui2": {
+        "qui2": 1.7391445401563312,
+        "gl": 4,
+        "p_valor": 0.783595294463432,
+        "significante_5pct": false,
+        "interpretacao": "sem desvio significativo ao nível de 5% (compatível com aleatoriedade)"
+      }
+    },
+    "grupos": {
+      "padroes": [
+        {
+          "padrao": "3 no G1 (01–10) / 2 no G2 (11–20) / 2 no G3 (21–31)",
+          "chave": [
+            3,
+            2,
+            2
+          ],
+          "freq": 18,
+          "pct": 18.0,
+          "esperado_freq": 11.3,
+          "esperado_pct": 11.29,
+          "desvio_pct": 6.71,
+          "rank": 1
+        },
+        {
+          "padrao": "2 no G1 (01–10) / 2 no G2 (11–20) / 3 no G3 (21–31)",
+          "chave": [
+            2,
+            2,
+            3
+          ],
+          "freq": 14,
+          "pct": 14.0,
+          "esperado_freq": 12.7,
+          "esperado_pct": 12.71,
+          "desvio_pct": 1.29,
+          "rank": 2
+        },
+        {
+          "padrao": "1 no G1 (01–10) / 2 no G2 (11–20) / 4 no G3 (21–31)",
+          "chave": [
+            1,
+            2,
+            4
+          ],
+          "freq": 9,
+          "pct": 9.0,
+          "esperado_freq": 5.6,
+          "esperado_pct": 5.65,
+          "desvio_pct": 3.35,
+          "rank": 3
+        },
+        {
+          "padrao": "2 no G1 (01–10) / 1 no G2 (11–20) / 4 no G3 (21–31)",
+          "chave": [
+            2,
+            1,
+            4
+          ],
+          "freq": 9,
+          "pct": 9.0,
+          "esperado_freq": 5.6,
+          "esperado_pct": 5.65,
+          "desvio_pct": 3.35,
+          "rank": 4
+        },
+        {
+          "padrao": "1 no G1 (01–10) / 3 no G2 (11–20) / 3 no G3 (21–31)",
+          "chave": [
+            1,
+            3,
+            3
+          ],
+          "freq": 8,
+          "pct": 8.0,
+          "esperado_freq": 7.5,
+          "esperado_pct": 7.53,
+          "desvio_pct": 0.47,
+          "rank": 5
+        },
+        {
+          "padrao": "2 no G1 (01–10) / 3 no G2 (11–20) / 2 no G3 (21–31)",
+          "chave": [
+            2,
+            3,
+            2
+          ],
+          "freq": 5,
+          "pct": 5.0,
+          "esperado_freq": 11.3,
+          "esperado_pct": 11.29,
+          "desvio_pct": -6.29,
+          "rank": 6
+        },
+        {
+          "padrao": "3 no G1 (01–10) / 1 no G2 (11–20) / 3 no G3 (21–31)",
+          "chave": [
+            3,
+            1,
+            3
+          ],
+          "freq": 5,
+          "pct": 5.0,
+          "esperado_freq": 7.5,
+          "esperado_pct": 7.53,
+          "desvio_pct": -2.53,
+          "rank": 7
+        },
+        {
+          "padrao": "4 no G1 (01–10) / 1 no G2 (11–20) / 2 no G3 (21–31)",
+          "chave": [
+            4,
+            1,
+            2
+          ],
+          "freq": 4,
+          "pct": 4.0,
+          "esperado_freq": 4.4,
+          "esperado_pct": 4.39,
+          "desvio_pct": -0.39,
+          "rank": 8
+        },
+        {
+          "padrao": "4 no G1 (01–10) / 2 no G2 (11–20) / 1 no G3 (21–31)",
+          "chave": [
+            4,
+            2,
+            1
+          ],
+          "freq": 4,
+          "pct": 4.0,
+          "esperado_freq": 4.0,
+          "esperado_pct": 3.95,
+          "desvio_pct": 0.05,
+          "rank": 9
+        },
+        {
+          "padrao": "1 no G1 (01–10) / 4 no G2 (11–20) / 2 no G3 (21–31)",
+          "chave": [
+            1,
+            4,
+            2
+          ],
+          "freq": 3,
+          "pct": 3.0,
+          "esperado_freq": 4.4,
+          "esperado_pct": 4.39,
+          "desvio_pct": -1.39,
+          "rank": 10
+        },
+        {
+          "padrao": "2 no G1 (01–10) / 4 no G2 (11–20) / 1 no G3 (21–31)",
+          "chave": [
+            2,
+            4,
+            1
+          ],
+          "freq": 3,
+          "pct": 3.0,
+          "esperado_freq": 4.0,
+          "esperado_pct": 3.95,
+          "desvio_pct": -0.95,
+          "rank": 11
+        },
+        {
+          "padrao": "0 no G1 (01–10) / 3 no G2 (11–20) / 4 no G3 (21–31)",
+          "chave": [
+            0,
+            3,
+            4
+          ],
+          "freq": 2,
+          "pct": 2.0,
+          "esperado_freq": 1.5,
+          "esperado_pct": 1.51,
+          "desvio_pct": 0.49,
+          "rank": 12
+        },
+        {
+          "padrao": "1 no G1 (01–10) / 1 no G2 (11–20) / 5 no G3 (21–31)",
+          "chave": [
+            1,
+            1,
+            5
+          ],
+          "freq": 2,
+          "pct": 2.0,
+          "esperado_freq": 1.8,
+          "esperado_pct": 1.76,
+          "desvio_pct": 0.24,
+          "rank": 13
+        },
+        {
+          "padrao": "2 no G1 (01–10) / 0 no G2 (11–20) / 5 no G3 (21–31)",
+          "chave": [
+            2,
+            0,
+            5
+          ],
+          "freq": 2,
+          "pct": 2.0,
+          "esperado_freq": 0.8,
+          "esperado_pct": 0.79,
+          "desvio_pct": 1.21,
+          "rank": 14
+        },
+        {
+          "padrao": "3 no G1 (01–10) / 3 no G2 (11–20) / 1 no G3 (21–31)",
+          "chave": [
+            3,
+            3,
+            1
+          ],
+          "freq": 2,
+          "pct": 2.0,
+          "esperado_freq": 6.0,
+          "esperado_pct": 6.02,
+          "desvio_pct": -4.02,
+          "rank": 15
+        },
+        {
+          "padrao": "3 no G1 (01–10) / 4 no G2 (11–20) / 0 no G3 (21–31)",
+          "chave": [
+            3,
+            4,
+            0
+          ],
+          "freq": 2,
+          "pct": 2.0,
+          "esperado_freq": 1.0,
+          "esperado_pct": 0.96,
+          "desvio_pct": 1.04,
+          "rank": 16
+        },
+        {
+          "padrao": "4 no G1 (01–10) / 0 no G2 (11–20) / 3 no G3 (21–31)",
+          "chave": [
+            4,
+            0,
+            3
+          ],
+          "freq": 2,
+          "pct": 2.0,
+          "esperado_freq": 1.3,
+          "esperado_pct": 1.32,
+          "desvio_pct": 0.68,
+          "rank": 17
+        },
+        {
+          "padrao": "1 no G1 (01–10) / 5 no G2 (11–20) / 1 no G3 (21–31)",
+          "chave": [
+            1,
+            5,
+            1
+          ],
+          "freq": 1,
+          "pct": 1.0,
+          "esperado_freq": 1.1,
+          "esperado_pct": 1.05,
+          "desvio_pct": -0.05,
+          "rank": 18
+        },
+        {
+          "padrao": "3 no G1 (01–10) / 0 no G2 (11–20) / 4 no G3 (21–31)",
+          "chave": [
+            3,
+            0,
+            4
+          ],
+          "freq": 1,
+          "pct": 1.0,
+          "esperado_freq": 1.5,
+          "esperado_pct": 1.51,
+          "desvio_pct": -0.51,
+          "rank": 19
+        },
+        {
+          "padrao": "4 no G1 (01–10) / 3 no G2 (11–20) / 0 no G3 (21–31)",
+          "chave": [
+            4,
+            3,
+            0
+          ],
+          "freq": 1,
+          "pct": 1.0,
+          "esperado_freq": 1.0,
+          "esperado_pct": 0.96,
+          "desvio_pct": 0.04,
+          "rank": 20
+        },
+        {
+          "padrao": "5 no G1 (01–10) / 0 no G2 (11–20) / 2 no G3 (21–31)",
+          "chave": [
+            5,
+            0,
+            2
+          ],
+          "freq": 1,
+          "pct": 1.0,
+          "esperado_freq": 0.5,
+          "esperado_pct": 0.53,
+          "desvio_pct": 0.47,
+          "rank": 21
+        },
+        {
+          "padrao": "5 no G1 (01–10) / 1 no G2 (11–20) / 1 no G3 (21–31)",
+          "chave": [
+            5,
+            1,
+            1
+          ],
+          "freq": 1,
+          "pct": 1.0,
+          "esperado_freq": 1.1,
+          "esperado_pct": 1.05,
+          "desvio_pct": -0.05,
+          "rank": 22
+        },
+        {
+          "padrao": "5 no G1 (01–10) / 2 no G2 (11–20) / 0 no G3 (21–31)",
+          "chave": [
+            5,
+            2,
+            0
+          ],
+          "freq": 1,
+          "pct": 1.0,
+          "esperado_freq": 0.4,
+          "esperado_pct": 0.43,
+          "desvio_pct": 0.57,
+          "rank": 23
+        }
+      ],
+      "ocupacao": [
+        {
+          "padrao": "3 grupos ocupados",
+          "chave": 3,
+          "freq": 88,
+          "pct": 88.0,
+          "esperado_freq": 88.2,
+          "esperado_pct": 88.23,
+          "desvio_pct": -0.23,
+          "rank": 1
+        },
+        {
+          "padrao": "2 grupos ocupados",
+          "chave": 2,
+          "freq": 12,
+          "pct": 12.0,
+          "esperado_freq": 11.7,
+          "esperado_pct": 11.75,
+          "desvio_pct": 0.25,
+          "rank": 2
+        },
+        {
+          "padrao": "1 grupo ocupado",
+          "chave": 1,
+          "freq": 0,
+          "pct": 0.0,
+          "esperado_freq": 0.0,
+          "esperado_pct": 0.02,
+          "desvio_pct": -0.02,
+          "rank": 3
+        }
+      ],
+      "contiguos": [
+        {
+          "padrao": "G1+G2+G3 (todos)",
+          "chave": "G1+G2+G3 (todos)",
+          "freq": 88,
+          "pct": 88.0,
+          "esperado_freq": 88.2,
+          "esperado_pct": 88.23,
+          "desvio_pct": -0.23,
+          "rank": 1
+        },
+        {
+          "padrao": "G1+G3 (sem G2)",
+          "chave": "G1+G3 (sem G2)",
+          "freq": 6,
+          "pct": 6.0,
+          "esperado_freq": 4.4,
+          "esperado_pct": 4.4,
+          "desvio_pct": 1.6,
+          "rank": 2
+        },
+        {
+          "padrao": "G1+G2 (sem G3)",
+          "chave": "G1+G2 (sem G3)",
+          "freq": 4,
+          "pct": 4.0,
+          "esperado_freq": 2.9,
+          "esperado_pct": 2.94,
+          "desvio_pct": 1.06,
+          "rank": 3
+        },
+        {
+          "padrao": "G2+G3 (sem G1)",
+          "chave": "G2+G3 (sem G1)",
+          "freq": 2,
+          "pct": 2.0,
+          "esperado_freq": 4.4,
+          "esperado_pct": 4.4,
+          "desvio_pct": -2.4,
+          "rank": 4
+        },
+        {
+          "padrao": "só G1",
+          "chave": "só G1",
+          "freq": 0,
+          "pct": 0.0,
+          "esperado_freq": 0.0,
+          "esperado_pct": 0.0,
+          "desvio_pct": -0.0,
+          "rank": 5
+        },
+        {
+          "padrao": "só G2",
+          "chave": "só G2",
+          "freq": 0,
+          "pct": 0.0,
+          "esperado_freq": 0.0,
+          "esperado_pct": 0.0,
+          "desvio_pct": -0.0,
+          "rank": 6
+        },
+        {
+          "padrao": "só G3",
+          "chave": "só G3",
+          "freq": 0,
+          "pct": 0.0,
+          "esperado_freq": 0.0,
+          "esperado_pct": 0.01,
+          "desvio_pct": -0.01,
+          "rank": 7
+        }
+      ],
+      "qui2": {
+        "qui2": 15.242081559797427,
+        "gl": 8,
+        "p_valor": 0.054605774144329926,
+        "significante_5pct": false,
+        "interpretacao": "sem desvio significativo ao nível de 5% (compatível com aleatoriedade)"
+      },
+      "qui2_contiguos": {
+        "qui2": 0.005078731127462516,
+        "gl": 1,
+        "p_valor": 0.9431866777788303,
+        "significante_5pct": false,
+        "interpretacao": "sem desvio significativo ao nível de 5% (compatível com aleatoriedade)"
+      },
+      "media_por_grupo": [
+        2.32,
+        2.04,
+        2.64
+      ],
+      "esperado_por_grupo": [
+        2.26,
+        2.26,
+        2.48
+      ]
+    },
+    "sequencias": {
+      "padroes": [
+        {
+          "padrao": "1 dupla",
+          "chave": "1 dupla",
+          "freq": 44,
+          "pct": 44.0,
+          "esperado_freq": 40.4,
+          "esperado_pct": 40.41,
+          "desvio_pct": 3.59,
+          "rank": 1
+        },
+        {
+          "padrao": "Sem sequência",
+          "chave": "Sem sequência",
+          "freq": 24,
+          "pct": 24.0,
+          "esperado_freq": 18.3,
+          "esperado_pct": 18.28,
+          "desvio_pct": 5.72,
+          "rank": 2
+        },
+        {
+          "padrao": "2 duplas",
+          "chave": "2 duplas",
+          "freq": 12,
+          "pct": 12.0,
+          "esperado_freq": 20.2,
+          "esperado_pct": 20.2,
+          "desvio_pct": -8.2,
+          "rank": 3
+        },
+        {
+          "padrao": "1 trio",
+          "chave": "1 trio",
+          "freq": 11,
+          "pct": 11.0,
+          "esperado_freq": 10.1,
+          "esperado_pct": 10.1,
+          "desvio_pct": 0.9,
+          "rank": 4
+        },
+        {
+          "padrao": "1 trio + 1 dupla",
+          "chave": "1 trio + 1 dupla",
+          "freq": 6,
+          "pct": 6.0,
+          "esperado_freq": 5.8,
+          "esperado_pct": 5.77,
+          "desvio_pct": 0.23,
+          "rank": 5
+        },
+        {
+          "padrao": "1 quadra",
+          "chave": "1 quadra",
+          "freq": 1,
+          "pct": 1.0,
+          "esperado_freq": 1.9,
+          "esperado_pct": 1.92,
+          "desvio_pct": -0.92,
+          "rank": 6
+        },
+        {
+          "padrao": "1 trio + 2 duplas",
+          "chave": "1 trio + 2 duplas",
+          "freq": 1,
+          "pct": 1.0,
+          "esperado_freq": 0.3,
+          "esperado_pct": 0.26,
+          "desvio_pct": 0.74,
+          "rank": 7
+        },
+        {
+          "padrao": "3 duplas",
+          "chave": "3 duplas",
+          "freq": 1,
+          "pct": 1.0,
+          "esperado_freq": 1.9,
+          "esperado_pct": 1.92,
+          "desvio_pct": -0.92,
+          "rank": 8
+        }
+      ],
+      "maior_sequencia": [
+        {
+          "padrao": "dupla (2 seguidas)",
+          "chave": 2,
+          "freq": 57,
+          "pct": 57.0,
+          "esperado_freq": 62.5,
+          "esperado_pct": 62.54,
+          "desvio_pct": -5.54,
+          "rank": 1
+        },
+        {
+          "padrao": "sem sequência",
+          "chave": 0,
+          "freq": 24,
+          "pct": 24.0,
+          "esperado_freq": 18.3,
+          "esperado_pct": 18.28,
+          "desvio_pct": 5.72,
+          "rank": 2
+        },
+        {
+          "padrao": "trio (3 seguidas)",
+          "chave": 3,
+          "freq": 18,
+          "pct": 18.0,
+          "esperado_freq": 16.4,
+          "esperado_pct": 16.4,
+          "desvio_pct": 1.6,
+          "rank": 3
+        },
+        {
+          "padrao": "quadra (4 seguidas)",
+          "chave": 4,
+          "freq": 1,
+          "pct": 1.0,
+          "esperado_freq": 2.5,
+          "esperado_pct": 2.47,
+          "desvio_pct": -1.47,
+          "rank": 4
+        },
+        {
+          "padrao": "7 seguidas",
+          "chave": 7,
+          "freq": 0,
+          "pct": 0.0,
+          "esperado_freq": 0.0,
+          "esperado_pct": 0.0,
+          "desvio_pct": -0.0,
+          "rank": 5
+        },
+        {
+          "padrao": "quina (5 seguidas)",
+          "chave": 5,
+          "freq": 0,
+          "pct": 0.0,
+          "esperado_freq": 0.3,
+          "esperado_pct": 0.29,
+          "desvio_pct": -0.29,
+          "rank": 6
+        },
+        {
+          "padrao": "sena (6 seguidas)",
+          "chave": 6,
+          "freq": 0,
+          "pct": 0.0,
+          "esperado_freq": 0.0,
+          "esperado_pct": 0.02,
+          "desvio_pct": -0.02,
+          "rank": 7
+        }
+      ],
+      "estatisticas": {
+        "com_alguma_sequencia": 76,
+        "pct_com_alguma_sequencia": 76.0,
+        "media_runs": 0.98,
+        "esperado_pct_com_alguma": 81.7
+      },
+      "qui2": {
+        "qui2": 5.829204479873014,
+        "gl": 5,
+        "p_valor": 0.32319445261378554,
+        "significante_5pct": false,
+        "interpretacao": "sem desvio significativo ao nível de 5% (compatível com aleatoriedade)"
+      },
+      "qui2_maior_seq": {
+        "qui2": 3.3125207176853517,
+        "gl": 3,
+        "p_valor": 0.3459037923500722,
+        "significante_5pct": false,
+        "interpretacao": "sem desvio significativo ao nível de 5% (compatível com aleatoriedade)"
+      }
+    }
+  },
+  "dezenas": {
+    "frequencia": {
+      "1": 24,
+      "2": 30,
+      "3": 19,
+      "4": 28,
+      "5": 16,
+      "6": 28,
+      "7": 20,
+      "8": 25,
+      "9": 23,
+      "10": 19,
+      "11": 29,
+      "12": 20,
+      "13": 17,
+      "14": 22,
+      "15": 21,
+      "16": 21,
+      "17": 13,
+      "18": 17,
+      "19": 19,
+      "20": 25,
+      "21": 18,
+      "22": 24,
+      "23": 23,
+      "24": 24,
+      "25": 26,
+      "26": 27,
+      "27": 24,
+      "28": 28,
+      "29": 25,
+      "30": 19,
+      "31": 26
+    },
+    "esperado": 22.6,
+    "quentes": [
+      [
+        2,
+        30
+      ],
+      [
+        11,
+        29
+      ],
+      [
+        4,
+        28
+      ],
+      [
+        6,
+        28
+      ],
+      [
+        28,
+        28
+      ],
+      [
+        26,
+        27
+      ],
+      [
+        25,
+        26
+      ]
+    ],
+    "frias": [
+      [
+        17,
+        13
+      ],
+      [
+        5,
+        16
+      ],
+      [
+        13,
+        17
+      ],
+      [
+        18,
+        17
+      ],
+      [
+        21,
+        18
+      ],
+      [
+        3,
+        19
+      ],
+      [
+        10,
+        19
+      ]
+    ],
+    "atraso": {
+      "1": 2,
+      "2": 3,
+      "3": 1,
+      "4": 0,
+      "5": 9,
+      "6": 0,
+      "7": 5,
+      "8": 3,
+      "9": 1,
+      "10": 4,
+      "11": 0,
+      "12": 4,
+      "13": 13,
+      "14": 4,
+      "15": 2,
+      "16": 2,
+      "17": 1,
+      "18": 2,
+      "19": 0,
+      "20": 4,
+      "21": 0,
+      "22": 3,
+      "23": 0,
+      "24": 0,
+      "25": 1,
+      "26": 4,
+      "27": 1,
+      "28": 5,
+      "29": 5,
+      "30": 6,
+      "31": 7
+    },
+    "pares_mais_frequentes": [
+      {
+        "par": "06-26",
+        "freq": 10
+      },
+      {
+        "par": "25-31",
+        "freq": 10
+      },
+      {
+        "par": "27-31",
+        "freq": 10
+      },
+      {
+        "par": "28-31",
+        "freq": 10
+      },
+      {
+        "par": "01-06",
+        "freq": 9
+      },
+      {
+        "par": "01-11",
+        "freq": 9
+      },
+      {
+        "par": "02-09",
+        "freq": 9
+      },
+      {
+        "par": "02-16",
+        "freq": 9
+      },
+      {
+        "par": "02-31",
+        "freq": 9
+      },
+      {
+        "par": "04-09",
+        "freq": 9
+      }
+    ]
+  },
+  "padrao_composto": {
+    "pares_impares": "4 pares / 3 ímpares",
+    "baixas_altas": "3 baixas / 4 altas",
+    "soma": "120–134",
+    "repetidas": "1 repetida",
+    "grupos": "3 no G1 (01–10) / 2 no G2 (11–20) / 2 no G3 (21–31)",
+    "grupos_ocupados": "3 grupos ocupados",
+    "sequencias": "1 dupla"
+  },
+  "registros": [
+    {
+      "concurso": 1238,
+      "data": "06/07/2026",
+      "dezenas": [
+        2,
+        9,
+        10,
+        13,
+        19,
+        26,
+        27
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 106,
+      "grupos": [
+        3,
+        2,
+        2
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "2 duplas",
+      "maior_sequencia": 2,
+      "runs": [
+        2,
+        2
+      ]
+    },
+    {
+      "concurso": 1239,
+      "data": "07/07/2026",
+      "dezenas": [
+        4,
+        8,
+        11,
+        14,
+        22,
+        24,
+        31
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 114,
+      "grupos": [
+        2,
+        2,
+        3
+      ],
+      "repetidas_anterior": 0,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1240,
+      "data": "08/07/2026",
+      "dezenas": [
+        4,
+        12,
+        17,
+        20,
+        21,
+        24,
+        29
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 127,
+      "grupos": [
+        1,
+        3,
+        3
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1241,
+      "data": "09/07/2026",
+      "dezenas": [
+        4,
+        6,
+        9,
+        27,
+        28,
+        30,
+        31
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 135,
+      "grupos": [
+        3,
+        0,
+        4
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "2 duplas",
+      "maior_sequencia": 2,
+      "runs": [
+        2,
+        2
+      ]
+    },
+    {
+      "concurso": 1242,
+      "data": "10/07/2026",
+      "dezenas": [
+        6,
+        7,
+        9,
+        12,
+        14,
+        28,
+        29
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 5,
+      "altas": 2,
+      "soma": 105,
+      "grupos": [
+        3,
+        2,
+        2
+      ],
+      "repetidas_anterior": 3,
+      "padrao_sequencia": "2 duplas",
+      "maior_sequencia": 2,
+      "runs": [
+        2,
+        2
+      ]
+    },
+    {
+      "concurso": 1243,
+      "data": "11/07/2026",
+      "dezenas": [
+        6,
+        11,
+        18,
+        25,
+        26,
+        29,
+        30
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 145,
+      "grupos": [
+        1,
+        2,
+        4
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "2 duplas",
+      "maior_sequencia": 2,
+      "runs": [
+        2,
+        2
+      ]
+    },
+    {
+      "concurso": 1244,
+      "data": "13/07/2026",
+      "dezenas": [
+        1,
+        3,
+        5,
+        12,
+        15,
+        20,
+        25
+      ],
+      "pares": 2,
+      "impares": 5,
+      "baixas": 5,
+      "altas": 2,
+      "soma": 81,
+      "grupos": [
+        3,
+        3,
+        1
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1245,
+      "data": "14/07/2026",
+      "dezenas": [
+        8,
+        10,
+        13,
+        22,
+        25,
+        27,
+        31
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 136,
+      "grupos": [
+        2,
+        1,
+        4
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1246,
+      "data": "15/07/2026",
+      "dezenas": [
+        1,
+        8,
+        9,
+        17,
+        19,
+        21,
+        22
+      ],
+      "pares": 2,
+      "impares": 5,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 97,
+      "grupos": [
+        3,
+        2,
+        2
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "2 duplas",
+      "maior_sequencia": 2,
+      "runs": [
+        2,
+        2
+      ]
+    },
+    {
+      "concurso": 1247,
+      "data": "16/07/2026",
+      "dezenas": [
+        12,
+        16,
+        20,
+        21,
+        24,
+        26,
+        30
+      ],
+      "pares": 6,
+      "impares": 1,
+      "baixas": 1,
+      "altas": 6,
+      "soma": 149,
+      "grupos": [
+        0,
+        3,
+        4
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1248,
+      "data": "17/07/2026",
+      "dezenas": [
+        6,
+        8,
+        11,
+        20,
+        22,
+        25,
+        26
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 118,
+      "grupos": [
+        2,
+        2,
+        3
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1249,
+      "data": "19/07/2026",
+      "dezenas": [
+        2,
+        17,
+        20,
+        26,
+        27,
+        29,
+        31
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 1,
+      "altas": 6,
+      "soma": 152,
+      "grupos": [
+        1,
+        2,
+        4
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1250,
+      "data": "20/07/2026",
+      "dezenas": [
+        6,
+        14,
+        19,
+        20,
+        21,
+        28,
+        31
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 139,
+      "grupos": [
+        1,
+        3,
+        3
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 trio",
+      "maior_sequencia": 3,
+      "runs": [
+        3
+      ]
+    },
+    {
+      "concurso": 1251,
+      "data": "21/07/2026",
+      "dezenas": [
+        1,
+        4,
+        6,
+        9,
+        12,
+        19,
+        25
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 5,
+      "altas": 2,
+      "soma": 76,
+      "grupos": [
+        4,
+        2,
+        1
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1252,
+      "data": "22/07/2026",
+      "dezenas": [
+        3,
+        4,
+        7,
+        14,
+        20,
+        22,
+        28
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 98,
+      "grupos": [
+        3,
+        2,
+        2
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1253,
+      "data": "23/07/2026",
+      "dezenas": [
+        2,
+        7,
+        13,
+        20,
+        23,
+        25,
+        28
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 118,
+      "grupos": [
+        2,
+        2,
+        3
+      ],
+      "repetidas_anterior": 3,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1254,
+      "data": "24/07/2026",
+      "dezenas": [
+        2,
+        13,
+        15,
+        16,
+        20,
+        23,
+        28
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 117,
+      "grupos": [
+        1,
+        4,
+        2
+      ],
+      "repetidas_anterior": 5,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1255,
+      "data": "26/07/2026",
+      "dezenas": [
+        5,
+        6,
+        14,
+        20,
+        25,
+        28,
+        31
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 129,
+      "grupos": [
+        2,
+        2,
+        3
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1256,
+      "data": "27/07/2026",
+      "dezenas": [
+        2,
+        8,
+        13,
+        19,
+        23,
+        27,
+        29
+      ],
+      "pares": 2,
+      "impares": 5,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 121,
+      "grupos": [
+        2,
+        2,
+        3
+      ],
+      "repetidas_anterior": 0,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1257,
+      "data": "28/07/2026",
+      "dezenas": [
+        4,
+        5,
+        9,
+        16,
+        20,
+        26,
+        29
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 109,
+      "grupos": [
+        3,
+        2,
+        2
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1258,
+      "data": "29/07/2026",
+      "dezenas": [
+        1,
+        6,
+        12,
+        14,
+        23,
+        26,
+        27
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 109,
+      "grupos": [
+        2,
+        2,
+        3
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1259,
+      "data": "30/07/2026",
+      "dezenas": [
+        1,
+        3,
+        7,
+        15,
+        18,
+        27,
+        28
+      ],
+      "pares": 2,
+      "impares": 5,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 99,
+      "grupos": [
+        3,
+        2,
+        2
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1260,
+      "data": "31/07/2026",
+      "dezenas": [
+        2,
+        3,
+        9,
+        11,
+        15,
+        21,
+        30
+      ],
+      "pares": 2,
+      "impares": 5,
+      "baixas": 5,
+      "altas": 2,
+      "soma": 91,
+      "grupos": [
+        3,
+        2,
+        2
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1261,
+      "data": "02/08/2026",
+      "dezenas": [
+        1,
+        8,
+        14,
+        19,
+        24,
+        27,
+        28
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 121,
+      "grupos": [
+        2,
+        2,
+        3
+      ],
+      "repetidas_anterior": 0,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1262,
+      "data": "03/08/2026",
+      "dezenas": [
+        3,
+        6,
+        13,
+        15,
+        18,
+        24,
+        26
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 105,
+      "grupos": [
+        2,
+        3,
+        2
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1263,
+      "data": "04/08/2026",
+      "dezenas": [
+        3,
+        4,
+        7,
+        8,
+        9,
+        14,
+        17
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 6,
+      "altas": 1,
+      "soma": 62,
+      "grupos": [
+        5,
+        2,
+        0
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 trio + 1 dupla",
+      "maior_sequencia": 3,
+      "runs": [
+        2,
+        3
+      ]
+    },
+    {
+      "concurso": 1264,
+      "data": "05/08/2026",
+      "dezenas": [
+        4,
+        7,
+        14,
+        16,
+        19,
+        20,
+        22
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 102,
+      "grupos": [
+        2,
+        4,
+        1
+      ],
+      "repetidas_anterior": 3,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1265,
+      "data": "06/08/2026",
+      "dezenas": [
+        1,
+        4,
+        6,
+        11,
+        12,
+        14,
+        18
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 6,
+      "altas": 1,
+      "soma": 66,
+      "grupos": [
+        3,
+        4,
+        0
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1266,
+      "data": "07/08/2026",
+      "dezenas": [
+        4,
+        7,
+        10,
+        11,
+        23,
+        25,
+        28
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 108,
+      "grupos": [
+        3,
+        1,
+        3
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1267,
+      "data": "09/08/2026",
+      "dezenas": [
+        2,
+        5,
+        15,
+        18,
+        24,
+        28,
+        31
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 123,
+      "grupos": [
+        2,
+        2,
+        3
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1268,
+      "data": "10/08/2026",
+      "dezenas": [
+        8,
+        12,
+        19,
+        22,
+        23,
+        26,
+        28
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 138,
+      "grupos": [
+        1,
+        2,
+        4
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1269,
+      "data": "11/08/2026",
+      "dezenas": [
+        6,
+        13,
+        16,
+        21,
+        25,
+        28,
+        29
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 138,
+      "grupos": [
+        1,
+        2,
+        4
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1270,
+      "data": "12/08/2026",
+      "dezenas": [
+        6,
+        14,
+        16,
+        18,
+        20,
+        23,
+        30
+      ],
+      "pares": 6,
+      "impares": 1,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 127,
+      "grupos": [
+        1,
+        4,
+        2
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1271,
+      "data": "13/08/2026",
+      "dezenas": [
+        5,
+        7,
+        12,
+        24,
+        29,
+        30,
+        31
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 138,
+      "grupos": [
+        2,
+        1,
+        4
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 trio",
+      "maior_sequencia": 3,
+      "runs": [
+        3
+      ]
+    },
+    {
+      "concurso": 1272,
+      "data": "14/08/2026",
+      "dezenas": [
+        1,
+        2,
+        5,
+        11,
+        18,
+        20,
+        23
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 80,
+      "grupos": [
+        3,
+        3,
+        1
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1273,
+      "data": "16/08/2026",
+      "dezenas": [
+        7,
+        8,
+        15,
+        17,
+        20,
+        23,
+        26
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 116,
+      "grupos": [
+        2,
+        3,
+        2
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1274,
+      "data": "17/08/2026",
+      "dezenas": [
+        8,
+        9,
+        15,
+        16,
+        22,
+        23,
+        24
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 117,
+      "grupos": [
+        2,
+        2,
+        3
+      ],
+      "repetidas_anterior": 3,
+      "padrao_sequencia": "1 trio + 2 duplas",
+      "maior_sequencia": 3,
+      "runs": [
+        2,
+        2,
+        3
+      ]
+    },
+    {
+      "concurso": 1275,
+      "data": "18/08/2026",
+      "dezenas": [
+        5,
+        10,
+        21,
+        23,
+        25,
+        29,
+        30
+      ],
+      "pares": 2,
+      "impares": 5,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 143,
+      "grupos": [
+        2,
+        0,
+        5
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1276,
+      "data": "19/08/2026",
+      "dezenas": [
+        6,
+        13,
+        15,
+        21,
+        22,
+        23,
+        28
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 128,
+      "grupos": [
+        1,
+        2,
+        4
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 trio",
+      "maior_sequencia": 3,
+      "runs": [
+        3
+      ]
+    },
+    {
+      "concurso": 1277,
+      "data": "20/08/2026",
+      "dezenas": [
+        1,
+        4,
+        8,
+        11,
+        16,
+        21,
+        29
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 90,
+      "grupos": [
+        3,
+        2,
+        2
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1278,
+      "data": "21/08/2026",
+      "dezenas": [
+        1,
+        3,
+        4,
+        10,
+        12,
+        24,
+        30
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 5,
+      "altas": 2,
+      "soma": 84,
+      "grupos": [
+        4,
+        1,
+        2
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1279,
+      "data": "23/08/2026",
+      "dezenas": [
+        1,
+        3,
+        4,
+        14,
+        15,
+        30,
+        31
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 5,
+      "altas": 2,
+      "soma": 98,
+      "grupos": [
+        3,
+        2,
+        2
+      ],
+      "repetidas_anterior": 4,
+      "padrao_sequencia": "3 duplas",
+      "maior_sequencia": 2,
+      "runs": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "concurso": 1280,
+      "data": "24/08/2026",
+      "dezenas": [
+        5,
+        10,
+        17,
+        22,
+        25,
+        28,
+        30
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 137,
+      "grupos": [
+        2,
+        1,
+        4
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1281,
+      "data": "25/08/2026",
+      "dezenas": [
+        1,
+        2,
+        18,
+        20,
+        21,
+        28,
+        31
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 121,
+      "grupos": [
+        2,
+        2,
+        3
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "2 duplas",
+      "maior_sequencia": 2,
+      "runs": [
+        2,
+        2
+      ]
+    },
+    {
+      "concurso": 1282,
+      "data": "26/08/2026",
+      "dezenas": [
+        7,
+        11,
+        15,
+        20,
+        22,
+        23,
+        29
+      ],
+      "pares": 2,
+      "impares": 5,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 127,
+      "grupos": [
+        1,
+        3,
+        3
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1283,
+      "data": "27/08/2026",
+      "dezenas": [
+        4,
+        8,
+        11,
+        19,
+        24,
+        27,
+        30
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 123,
+      "grupos": [
+        2,
+        2,
+        3
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1284,
+      "data": "28/08/2026",
+      "dezenas": [
+        4,
+        5,
+        8,
+        14,
+        22,
+        25,
+        30
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 108,
+      "grupos": [
+        3,
+        1,
+        3
+      ],
+      "repetidas_anterior": 3,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1285,
+      "data": "30/08/2026",
+      "dezenas": [
+        4,
+        5,
+        6,
+        10,
+        12,
+        15,
+        17
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 6,
+      "altas": 1,
+      "soma": 69,
+      "grupos": [
+        4,
+        3,
+        0
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 trio",
+      "maior_sequencia": 3,
+      "runs": [
+        3
+      ]
+    },
+    {
+      "concurso": 1286,
+      "data": "31/08/2026",
+      "dezenas": [
+        2,
+        4,
+        8,
+        10,
+        12,
+        17,
+        23
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 5,
+      "altas": 2,
+      "soma": 76,
+      "grupos": [
+        4,
+        2,
+        1
+      ],
+      "repetidas_anterior": 4,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1287,
+      "data": "01/09/2026",
+      "dezenas": [
+        3,
+        6,
+        16,
+        18,
+        26,
+        27,
+        29
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 125,
+      "grupos": [
+        2,
+        2,
+        3
+      ],
+      "repetidas_anterior": 0,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1288,
+      "data": "02/09/2026",
+      "dezenas": [
+        2,
+        4,
+        6,
+        7,
+        9,
+        16,
+        24
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 5,
+      "altas": 2,
+      "soma": 68,
+      "grupos": [
+        5,
+        1,
+        1
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1289,
+      "data": "03/09/2026",
+      "dezenas": [
+        1,
+        3,
+        6,
+        8,
+        20,
+        26,
+        30
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 94,
+      "grupos": [
+        4,
+        1,
+        2
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1290,
+      "data": "04/09/2026",
+      "dezenas": [
+        10,
+        13,
+        14,
+        20,
+        23,
+        24,
+        26
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 130,
+      "grupos": [
+        1,
+        3,
+        3
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "2 duplas",
+      "maior_sequencia": 2,
+      "runs": [
+        2,
+        2
+      ]
+    },
+    {
+      "concurso": 1291,
+      "data": "06/09/2026",
+      "dezenas": [
+        4,
+        6,
+        11,
+        13,
+        19,
+        21,
+        27
+      ],
+      "pares": 2,
+      "impares": 5,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 101,
+      "grupos": [
+        2,
+        3,
+        2
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1292,
+      "data": "08/09/2026",
+      "dezenas": [
+        1,
+        6,
+        9,
+        11,
+        12,
+        22,
+        26
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 5,
+      "altas": 2,
+      "soma": 87,
+      "grupos": [
+        3,
+        2,
+        2
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1293,
+      "data": "09/09/2026",
+      "dezenas": [
+        6,
+        11,
+        12,
+        14,
+        22,
+        26,
+        28
+      ],
+      "pares": 6,
+      "impares": 1,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 119,
+      "grupos": [
+        1,
+        3,
+        3
+      ],
+      "repetidas_anterior": 5,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1294,
+      "data": "10/09/2026",
+      "dezenas": [
+        1,
+        2,
+        3,
+        6,
+        19,
+        29,
+        30
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 90,
+      "grupos": [
+        4,
+        1,
+        2
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 trio + 1 dupla",
+      "maior_sequencia": 3,
+      "runs": [
+        3,
+        2
+      ]
+    },
+    {
+      "concurso": 1295,
+      "data": "11/09/2026",
+      "dezenas": [
+        10,
+        12,
+        14,
+        15,
+        24,
+        27,
+        31
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 133,
+      "grupos": [
+        1,
+        3,
+        3
+      ],
+      "repetidas_anterior": 0,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1296,
+      "data": "13/09/2026",
+      "dezenas": [
+        2,
+        8,
+        11,
+        14,
+        16,
+        21,
+        30
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 102,
+      "grupos": [
+        2,
+        3,
+        2
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1297,
+      "data": "14/09/2026",
+      "dezenas": [
+        1,
+        7,
+        8,
+        9,
+        11,
+        19,
+        26
+      ],
+      "pares": 2,
+      "impares": 5,
+      "baixas": 5,
+      "altas": 2,
+      "soma": 81,
+      "grupos": [
+        4,
+        2,
+        1
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 trio",
+      "maior_sequencia": 3,
+      "runs": [
+        3
+      ]
+    },
+    {
+      "concurso": 1298,
+      "data": "15/09/2026",
+      "dezenas": [
+        2,
+        8,
+        18,
+        24,
+        28,
+        29,
+        31
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 140,
+      "grupos": [
+        2,
+        1,
+        4
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1299,
+      "data": "16/09/2026",
+      "dezenas": [
+        4,
+        5,
+        8,
+        20,
+        25,
+        27,
+        31
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 120,
+      "grupos": [
+        3,
+        1,
+        3
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1300,
+      "data": "17/09/2026",
+      "dezenas": [
+        2,
+        12,
+        15,
+        25,
+        27,
+        29,
+        31
+      ],
+      "pares": 2,
+      "impares": 5,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 141,
+      "grupos": [
+        1,
+        2,
+        4
+      ],
+      "repetidas_anterior": 3,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1301,
+      "data": "18/09/2026",
+      "dezenas": [
+        2,
+        7,
+        8,
+        14,
+        15,
+        24,
+        26
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 5,
+      "altas": 2,
+      "soma": 96,
+      "grupos": [
+        3,
+        2,
+        2
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "2 duplas",
+      "maior_sequencia": 2,
+      "runs": [
+        2,
+        2
+      ]
+    },
+    {
+      "concurso": 1302,
+      "data": "20/09/2026",
+      "dezenas": [
+        3,
+        5,
+        20,
+        21,
+        27,
+        28,
+        29
+      ],
+      "pares": 2,
+      "impares": 5,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 133,
+      "grupos": [
+        2,
+        1,
+        4
+      ],
+      "repetidas_anterior": 0,
+      "padrao_sequencia": "1 trio + 1 dupla",
+      "maior_sequencia": 3,
+      "runs": [
+        2,
+        3
+      ]
+    },
+    {
+      "concurso": 1303,
+      "data": "21/09/2026",
+      "dezenas": [
+        11,
+        13,
+        17,
+        21,
+        25,
+        28,
+        31
+      ],
+      "pares": 1,
+      "impares": 6,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 146,
+      "grupos": [
+        0,
+        3,
+        4
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1304,
+      "data": "22/09/2026",
+      "dezenas": [
+        5,
+        7,
+        22,
+        25,
+        26,
+        27,
+        30
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 142,
+      "grupos": [
+        2,
+        0,
+        5
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 trio",
+      "maior_sequencia": 3,
+      "runs": [
+        3
+      ]
+    },
+    {
+      "concurso": 1305,
+      "data": "23/09/2026",
+      "dezenas": [
+        8,
+        11,
+        13,
+        14,
+        18,
+        27,
+        31
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 122,
+      "grupos": [
+        1,
+        4,
+        2
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1306,
+      "data": "24/09/2026",
+      "dezenas": [
+        3,
+        5,
+        10,
+        13,
+        18,
+        22,
+        24
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 95,
+      "grupos": [
+        3,
+        2,
+        2
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1307,
+      "data": "25/09/2026",
+      "dezenas": [
+        1,
+        3,
+        4,
+        9,
+        11,
+        27,
+        31
+      ],
+      "pares": 1,
+      "impares": 6,
+      "baixas": 5,
+      "altas": 2,
+      "soma": 86,
+      "grupos": [
+        4,
+        1,
+        2
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1308,
+      "data": "27/09/2026",
+      "dezenas": [
+        4,
+        7,
+        9,
+        11,
+        16,
+        24,
+        28
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 99,
+      "grupos": [
+        3,
+        2,
+        2
+      ],
+      "repetidas_anterior": 3,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1309,
+      "data": "28/09/2026",
+      "dezenas": [
+        6,
+        12,
+        24,
+        25,
+        26,
+        29,
+        31
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 153,
+      "grupos": [
+        1,
+        1,
+        5
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 trio",
+      "maior_sequencia": 3,
+      "runs": [
+        3
+      ]
+    },
+    {
+      "concurso": 1310,
+      "data": "29/09/2026",
+      "dezenas": [
+        2,
+        6,
+        7,
+        16,
+        22,
+        26,
+        29
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 108,
+      "grupos": [
+        3,
+        1,
+        3
+      ],
+      "repetidas_anterior": 3,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1311,
+      "data": "30/09/2026",
+      "dezenas": [
+        1,
+        2,
+        8,
+        9,
+        13,
+        16,
+        24
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 5,
+      "altas": 2,
+      "soma": 73,
+      "grupos": [
+        4,
+        2,
+        1
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "2 duplas",
+      "maior_sequencia": 2,
+      "runs": [
+        2,
+        2
+      ]
+    },
+    {
+      "concurso": 1312,
+      "data": "01/10/2026",
+      "dezenas": [
+        2,
+        8,
+        15,
+        16,
+        19,
+        27,
+        30
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 117,
+      "grupos": [
+        2,
+        3,
+        2
+      ],
+      "repetidas_anterior": 3,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1313,
+      "data": "02/10/2026",
+      "dezenas": [
+        7,
+        11,
+        12,
+        15,
+        22,
+        25,
+        31
+      ],
+      "pares": 2,
+      "impares": 5,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 123,
+      "grupos": [
+        1,
+        3,
+        3
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1314,
+      "data": "03/10/2026",
+      "dezenas": [
+        2,
+        10,
+        11,
+        17,
+        25,
+        27,
+        31
+      ],
+      "pares": 2,
+      "impares": 5,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 123,
+      "grupos": [
+        2,
+        2,
+        3
+      ],
+      "repetidas_anterior": 3,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1315,
+      "data": "05/10/2026",
+      "dezenas": [
+        2,
+        9,
+        13,
+        15,
+        17,
+        19,
+        26
+      ],
+      "pares": 2,
+      "impares": 5,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 101,
+      "grupos": [
+        2,
+        4,
+        1
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1316,
+      "data": "06/10/2026",
+      "dezenas": [
+        1,
+        6,
+        10,
+        16,
+        18,
+        22,
+        29
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 102,
+      "grupos": [
+        3,
+        2,
+        2
+      ],
+      "repetidas_anterior": 0,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1317,
+      "data": "07/10/2026",
+      "dezenas": [
+        4,
+        7,
+        16,
+        25,
+        27,
+        28,
+        31
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 138,
+      "grupos": [
+        2,
+        1,
+        4
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1318,
+      "data": "08/10/2026",
+      "dezenas": [
+        1,
+        2,
+        3,
+        11,
+        20,
+        25,
+        27
+      ],
+      "pares": 2,
+      "impares": 5,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 89,
+      "grupos": [
+        3,
+        2,
+        2
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 trio",
+      "maior_sequencia": 3,
+      "runs": [
+        3
+      ]
+    },
+    {
+      "concurso": 1319,
+      "data": "09/10/2026",
+      "dezenas": [
+        2,
+        4,
+        9,
+        10,
+        23,
+        26,
+        28
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 102,
+      "grupos": [
+        4,
+        0,
+        3
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1320,
+      "data": "11/10/2026",
+      "dezenas": [
+        2,
+        16,
+        19,
+        24,
+        25,
+        29,
+        30
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 1,
+      "altas": 6,
+      "soma": 145,
+      "grupos": [
+        1,
+        2,
+        4
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "2 duplas",
+      "maior_sequencia": 2,
+      "runs": [
+        2,
+        2
+      ]
+    },
+    {
+      "concurso": 1321,
+      "data": "13/10/2026",
+      "dezenas": [
+        1,
+        5,
+        8,
+        15,
+        18,
+        19,
+        20
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 86,
+      "grupos": [
+        3,
+        4,
+        0
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 trio",
+      "maior_sequencia": 3,
+      "runs": [
+        3
+      ]
+    },
+    {
+      "concurso": 1322,
+      "data": "14/10/2026",
+      "dezenas": [
+        2,
+        3,
+        4,
+        13,
+        17,
+        26,
+        31
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 96,
+      "grupos": [
+        3,
+        2,
+        2
+      ],
+      "repetidas_anterior": 0,
+      "padrao_sequencia": "1 trio",
+      "maior_sequencia": 3,
+      "runs": [
+        3
+      ]
+    },
+    {
+      "concurso": 1323,
+      "data": "15/10/2026",
+      "dezenas": [
+        2,
+        3,
+        10,
+        11,
+        12,
+        29,
+        31
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 5,
+      "altas": 2,
+      "soma": 98,
+      "grupos": [
+        3,
+        2,
+        2
+      ],
+      "repetidas_anterior": 3,
+      "padrao_sequencia": "1 trio + 1 dupla",
+      "maior_sequencia": 3,
+      "runs": [
+        2,
+        3
+      ]
+    },
+    {
+      "concurso": 1324,
+      "data": "16/10/2026",
+      "dezenas": [
+        10,
+        13,
+        14,
+        21,
+        22,
+        24,
+        29
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 133,
+      "grupos": [
+        1,
+        2,
+        4
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "2 duplas",
+      "maior_sequencia": 2,
+      "runs": [
+        2,
+        2
+      ]
+    },
+    {
+      "concurso": 1325,
+      "data": "18/10/2026",
+      "dezenas": [
+        2,
+        9,
+        11,
+        14,
+        16,
+        18,
+        28
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 98,
+      "grupos": [
+        2,
+        4,
+        1
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1326,
+      "data": "19/10/2026",
+      "dezenas": [
+        1,
+        2,
+        6,
+        11,
+        19,
+        21,
+        23
+      ],
+      "pares": 2,
+      "impares": 5,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 83,
+      "grupos": [
+        3,
+        2,
+        2
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1327,
+      "data": "20/10/2026",
+      "dezenas": [
+        10,
+        11,
+        20,
+        22,
+        23,
+        24,
+        26
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 136,
+      "grupos": [
+        1,
+        2,
+        4
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 trio + 1 dupla",
+      "maior_sequencia": 3,
+      "runs": [
+        2,
+        3
+      ]
+    },
+    {
+      "concurso": 1328,
+      "data": "21/10/2026",
+      "dezenas": [
+        3,
+        4,
+        5,
+        15,
+        23,
+        28,
+        31
+      ],
+      "pares": 2,
+      "impares": 5,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 109,
+      "grupos": [
+        3,
+        1,
+        3
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 trio",
+      "maior_sequencia": 3,
+      "runs": [
+        3
+      ]
+    },
+    {
+      "concurso": 1329,
+      "data": "22/10/2026",
+      "dezenas": [
+        1,
+        6,
+        7,
+        9,
+        25,
+        29,
+        31
+      ],
+      "pares": 1,
+      "impares": 6,
+      "baixas": 4,
+      "altas": 3,
+      "soma": 108,
+      "grupos": [
+        4,
+        0,
+        3
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1330,
+      "data": "23/10/2026",
+      "dezenas": [
+        2,
+        9,
+        16,
+        22,
+        23,
+        28,
+        31
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 131,
+      "grupos": [
+        2,
+        1,
+        4
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1331,
+      "data": "24/10/2026",
+      "dezenas": [
+        10,
+        11,
+        23,
+        26,
+        28,
+        29,
+        30
+      ],
+      "pares": 4,
+      "impares": 3,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 157,
+      "grupos": [
+        1,
+        1,
+        5
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 trio + 1 dupla",
+      "maior_sequencia": 3,
+      "runs": [
+        2,
+        3
+      ]
+    },
+    {
+      "concurso": 1332,
+      "data": "26/10/2026",
+      "dezenas": [
+        7,
+        9,
+        18,
+        26,
+        27,
+        28,
+        29
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 144,
+      "grupos": [
+        2,
+        1,
+        4
+      ],
+      "repetidas_anterior": 3,
+      "padrao_sequencia": "1 quadra",
+      "maior_sequencia": 4,
+      "runs": [
+        4
+      ]
+    },
+    {
+      "concurso": 1333,
+      "data": "27/10/2026",
+      "dezenas": [
+        10,
+        12,
+        14,
+        20,
+        22,
+        25,
+        26
+      ],
+      "pares": 6,
+      "impares": 1,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 129,
+      "grupos": [
+        1,
+        3,
+        3
+      ],
+      "repetidas_anterior": 1,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1334,
+      "data": "28/10/2026",
+      "dezenas": [
+        2,
+        4,
+        6,
+        8,
+        9,
+        22,
+        25
+      ],
+      "pares": 5,
+      "impares": 2,
+      "baixas": 5,
+      "altas": 2,
+      "soma": 76,
+      "grupos": [
+        5,
+        0,
+        2
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    },
+    {
+      "concurso": 1335,
+      "data": "29/10/2026",
+      "dezenas": [
+        1,
+        11,
+        15,
+        16,
+        18,
+        19,
+        24
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 104,
+      "grupos": [
+        1,
+        5,
+        1
+      ],
+      "repetidas_anterior": 0,
+      "padrao_sequencia": "2 duplas",
+      "maior_sequencia": 2,
+      "runs": [
+        2,
+        2
+      ]
+    },
+    {
+      "concurso": 1336,
+      "data": "30/10/2026",
+      "dezenas": [
+        3,
+        9,
+        17,
+        21,
+        23,
+        25,
+        27
+      ],
+      "pares": 0,
+      "impares": 7,
+      "baixas": 2,
+      "altas": 5,
+      "soma": 125,
+      "grupos": [
+        2,
+        1,
+        4
+      ],
+      "repetidas_anterior": 0,
+      "padrao_sequencia": "Sem sequência",
+      "maior_sequencia": 0,
+      "runs": []
+    },
+    {
+      "concurso": 1337,
+      "data": "01/11/2026",
+      "dezenas": [
+        4,
+        6,
+        11,
+        19,
+        21,
+        23,
+        24
+      ],
+      "pares": 3,
+      "impares": 4,
+      "baixas": 3,
+      "altas": 4,
+      "soma": 108,
+      "grupos": [
+        2,
+        2,
+        3
+      ],
+      "repetidas_anterior": 2,
+      "padrao_sequencia": "1 dupla",
+      "maior_sequencia": 2,
+      "runs": [
+        2
+      ]
+    }
+  ]
+}

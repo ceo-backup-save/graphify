@@ -1,0 +1,9 @@
+rank,padrao,freq,pct,esperado_pct,desvio_pct
+1,4 pares / 3 ímpares,29,29.0,29.07,-0.07
+2,3 pares / 4 ímpares,25,25.0,31.49,-6.49
+3,5 pares / 2 ímpares,21,21.0,13.7,7.3
+4,2 pares / 5 ímpares,17,17.0,17.44,-0.44
+5,6 pares / 1 ímpar,4,4.0,3.05,0.95
+6,1 par / 6 ímpares,3,3.0,4.57,-1.57
+7,0 pares / 7 ímpares,1,1.0,0.44,0.56
+8,7 pares / 0 ímpares,0,0.0,0.24,-0.24

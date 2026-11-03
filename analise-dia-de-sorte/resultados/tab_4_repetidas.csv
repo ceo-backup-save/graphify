@@ -1,0 +1,9 @@
+rank,padrao,freq,pct,esperado_pct,desvio_pct
+1,1 repetida,38,38.0,35.83,2.17
+2,2 repetidas,36,36.0,33.94,2.06
+3,3 repetidas,12,12.0,14.14,-2.14
+4,nenhuma repetida,10,10.0,13.16,-3.16
+5,4 repetidas,2,2.0,2.69,-0.69
+6,5 repetidas,2,2.0,0.22,1.78
+7,6 repetidas,0,0.0,0.01,-0.01
+8,7 repetidas,0,0.0,0.0,-0.0
